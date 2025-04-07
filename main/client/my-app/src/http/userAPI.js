@@ -10,7 +10,9 @@ export const registration = async (name, surname, age, phone, email, password) =
         phone,
         email,
         password,
-        role: 'USER'
+        role: 'USER',
+        hobbies: null,
+        details: null
     });
     localStorage.setItem('token', data.token);
     return jwtDecode(data.token);

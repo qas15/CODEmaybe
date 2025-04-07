@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../db.js'); // Assuming your sequelize instance is set up here
+const sequelize = require('../db.js');
 
 // Ваши настройки для подключения к базе данных
 
@@ -37,11 +37,20 @@ const User = sequelize.define('user', {
     role: {
         type: DataTypes.STRING,
         defaultValue: "USER"
+    },
+    details: {
+        type: DataTypes.STRING,
+        allowNull: true  // Это поле может быть пустым
+    },
+    hobbies: {
+        type: DataTypes.STRING,
+        allowNull: true  // Это поле также может быть пустым
     }
 });
 
 // Экспортируем модель
 module.exports = { User };
+
 
 
 

@@ -1,55 +1,65 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import { Context } from '../AppContextProvider'; // Импорт контекста
+import '../styles/Profile.css'; // Подключаем файл с стилями
 
 const Profile = () => {
-    const [user, setUser] = useState(null);
+    const [userData, setUserData] = useState(null);
     const [error, setError] = useState(null);
 
+    const { user } = useContext(Context);
+    const email = user?.email;
+
     useEffect(() => {
-        // Запрос на сервер для получения данных пользователя по email
+        if (!email) {
+            setError('Email not available');
+            return;
+        }
+
         const fetchUserData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/user/11%4011.com');
-                setUser(response.data);  // Если пользователь найден, сохраняем его данные
-                setError(null);           // Если ошибка, очищаем ошибку
+                const response = await axios.get(`http://localhost:5000/api/user/${email}`);
+
+                if (response.status === 200) {
+                    setUserData(response.data);
+                    setError(null);
+                }
             } catch (err) {
-                setUser(null);            // Если ошибка, очищаем данные
-                setError('Пользователь не найден');  // Устанавливаем сообщение об ошибке
+                if (err.response && err.response.status === 404) {
+                    setError('User not found');
+                } else {
+                    setError(err.message);
+                }
             }
         };
 
         fetchUserData();
-    }, []);  // Эффект выполняется при монтировании компонента
-
+    }, [email]);
     return (
-        <div>
-            {error && <p>{error}</p>}  {/* Отображаем ошибку, если она есть */}
-            {user ? (
-                <div>
-                    <h1>Данные пользователя</h1>
-                    <p>Имя: {user.name}</p>
-                    <p>Фамилия: {user.surname}</p> {/* Добавлено поле фамилии */}
-                    <p>Возраст: {user.age}</p>       {/* Добавлено поле возраста */}
-                    <p>Email: {user.email}</p>
-                    <p>Телефон: {user.phone}</p>
-                </div>
-            ) : (
-                <p>Загрузка...</p>  // Если данные еще загружаются, показываем загрузку
-            )}
+        <div className="profile-container">
+            <div className="profile-card">
+                {error ? (
+                    <p className="error-message">{error}</p>  // Показываем ошибку, если есть
+                ) : (
+                    userData && (
+                        <div>
+                            <h1>Данные пользователя</h1>
+                            <div className="profile-info">
+                                <p><span>Имя:</span> {userData.name}</p>
+                                <p><span>Фамилия:</span> {userData.surname}</p>
+                                <p><span>Возраст:</span> {userData.age}</p>
+                                <p><span>Email:</span> {userData.email}</p>
+                                <p><span>Телефон:</span> {userData.phone}</p>
+                                <p><span>Детали:</span> {userData.details || 'Нет данных'}</p>
+                                <p><span>Хобби:</span> {userData.hobbies || 'Нет данных'}</p>
+                            </div>
+                        </div>
+                    )
+                )}
+            </div>
         </div>
     );
 };
 
 export default Profile;
-
-
-
-
-
-
-
-
-
-
-
 

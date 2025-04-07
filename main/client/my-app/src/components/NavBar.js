@@ -5,16 +5,22 @@ import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const logOut = () => {
         localStorage.removeItem('token');
         setUser({});  // Вызываем setUser, чтобы сбросить данные пользователя
         setIsAuth(false);  // Сбрасываем статус авторизации
+
+        // Редирект на главную страницу и перезагрузка
+        navigate('/');
+        setTimeout(() => {
+            window.location.reload();
+        }, 200); // Перезагрузка страницы после редиректа
     };
 
     const handleRedirect = () => {
-        history('/');
+        navigate('/');
         setTimeout(() => {
             window.location.reload();
         }, 200);
@@ -33,7 +39,7 @@ const NavBar = () => {
                 <Nav className="ml-auto" style={{ color: 'white' }}>
                     <Button
                         variant="outline-light"
-                        onClick={() => history('/profiles')}
+                        onClick={() => navigate('/profiles')}
                         className="ms-2"
                     >
                         Профили
@@ -42,7 +48,7 @@ const NavBar = () => {
                     {user.isAuth && (
                         <Button
                             variant="outline-light"
-                            onClick={() => history('/profile')}
+                            onClick={() => navigate('/profile')}
                             className="ms-2"
                         >
                             Профиль
@@ -60,7 +66,7 @@ const NavBar = () => {
                     ) : (
                         <Button
                             variant="outline-light"
-                            onClick={() => history('/login')}
+                            onClick={() => navigate('/login')}
                             className="ms-2"
                         >
                             Авторизация
@@ -73,6 +79,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
 
 
 

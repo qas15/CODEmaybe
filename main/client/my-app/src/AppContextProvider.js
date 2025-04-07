@@ -38,4 +38,4 @@ export const AppContextProvider = ({ children }) => {
         </Context.Provider>
     );
 };
-
+export default AppContextProvider
