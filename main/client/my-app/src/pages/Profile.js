@@ -12,6 +12,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (!email) {
+            window.location.reload()
             setError('Email not available');
             return;
         }
