@@ -1,0 +1,80 @@
+/* NavBar.css */
+
+/* Стиль для всего Navbar */
+.Navbar {
+    background-color: #343a40;
+    padding: 10px 20px;
+}
+
+
+.LOGO {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.LOGO:hover {
+    color: #f8f9fa; /* Цвет текста при наведении */
+}
+
+/* Стиль для кнопок в Navbar */
+.Nav .btn {
+    border-radius: 5px; /* Округление углов */
+    font-size: 1rem; /* Размер шрифта для кнопок */
+    padding: 8px 20px; /* Отступы внутри кнопок */
+}
+
+.Nav .btn:hover {
+    background-color: #495057; /* Цвет фона при наведении */
+    color: #ffffff; /* Белый цвет текста при наведении */
+}
+
+/* Кнопка для выхода */
+.Nav .btn-outline-light {
+    border-color: #ffffff; /* Белая рамка для кнопки */
+    color: #ffffff; /* Белый цвет текста */
+}
+
+.Nav .btn-outline-light:hover {
+    background-color: #ffffff; /* Белый фон при наведении */
+    color: #343a40; /* Темный текст при наведении */
+}
+
+/* Расположение элементов Nav */
+.Nav {
+    display: flex;
+    align-items: center; /* Выравнивание элементов по центру */
+    margin-left: auto; /* Отодвигаем элементы вправо */
+}
+
+/* Стили для кнопки Авторизация */
+.Nav .btn-outline-light {
+    font-size: 1rem; /* Размер шрифта */
+    padding: 8px 15px; /* Отступы */
+}
+
+/* Если нужно, можно добавить медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    /* Сжимаем лого и изменяем кнопки для маленьких экранов */
+    .LOGO {
+        font-size: 1.2rem;
+    }
+
+    .Nav .btn {
+        font-size: 0.9rem;
+        padding: 6px 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
