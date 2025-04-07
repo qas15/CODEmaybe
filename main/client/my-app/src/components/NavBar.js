@@ -2,15 +2,17 @@ import React, { useContext } from 'react';
 import { Context } from '../AppContextProvider'; // Импорт контекста
 import { useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
+import { logout } from '../http/userAPI';
 
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста
     const history = useNavigate();
 
     const logOut = () => {
-        localStorage.removeItem('token');
-        setUser({});  // Вызываем setUser, чтобы сбросить данные пользователя
-        setIsAuth(false);  // Сбрасываем статус авторизации
+        logout().then((r) => {
+            setUser({});  // Вызываем setUser, чтобы сбросить данные пользователя
+            setIsAuth(false);  // Сбрасываем статус авторизации
+        }).catch((e) => {});
     };
 
     const handleRedirect = () => {

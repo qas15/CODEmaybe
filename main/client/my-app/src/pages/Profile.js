@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { ErrorResponse, getProfile, logout } from '../http/userAPI';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -9,8 +9,16 @@ const Profile = () => {
         // Запрос на сервер для получения данных пользователя по email
         const fetchUserData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/user/11%4011.com');
-                setUser(response.data);  // Если пользователь найден, сохраняем его данные
+                const response = await getProfile();
+
+                if (response instanceof ErrorResponse) {
+                    setUser(null);
+                    setError(response.message);
+                    return;
+                }
+
+                setUser(response); 
+                 // Если пользователь найден, сохраняем его данные
                 setError(null);           // Если ошибка, очищаем ошибку
             } catch (err) {
                 setUser(null);            // Если ошибка, очищаем данные
@@ -24,16 +32,15 @@ const Profile = () => {
     return (
         <div>
             {error && <p>{error}</p>}  {/* Отображаем ошибку, если она есть */}
-            {user ? (
+            {(!error) && user ? (
                 <div>
                     <h1>Данные пользователя</h1>
                     <p>Имя: {user.name}</p>
-                    <p>Фамилия: {user.surname}</p> {/* Добавлено поле фамилии */}
                     <p>Возраст: {user.age}</p>       {/* Добавлено поле возраста */}
                     <p>Email: {user.email}</p>
                     <p>Телефон: {user.phone}</p>
                 </div>
-            ) : (
+            ) : error ? <a href="/">На главную</a> : (
                 <p>Загрузка...</p>  // Если данные еще загружаются, показываем загрузку
             )}
         </div>
