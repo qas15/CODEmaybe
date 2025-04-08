@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Context } from '../AppContextProvider'; // Импорт контекста
 import { useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
+import '../styles/NavBar.css'; // Подключаем файл с стилями
 
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Card, Row, Col, Spinner } from 'react-bootstrap';
+import {get} from "../http";
 
 const Profiles = () => {
     const [users, setUsers] = useState([]);
@@ -10,7 +11,7 @@ const Profiles = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/users');
+                const response = await get('http://localhost:5000/api/users');
                 setUsers(response.data);
                 setLoading(false);
             } catch (err) {

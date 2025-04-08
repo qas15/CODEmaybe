@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/main" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/main/backNew/TechArrow-MainCode" vcs="Git" />
   </component>
 </project>

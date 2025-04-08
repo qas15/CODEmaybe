@@ -3,7 +3,7 @@ import {
     REGISTRATION_ROUTE,
     SHOP_ROUTE,
     PROFILE,
-    PROFILES
+    PROFILES, ABOUT
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
@@ -13,6 +13,7 @@ import Profiles from './pages/Profiles';
 
 
 import Main from './pages/Main'
+import About from "./pages/About";
 
 export const authRoutes = [
     {
@@ -21,6 +22,10 @@ export const authRoutes = [
     }
 ]
 export const publicRoutes = [
+    {
+        path: ABOUT,
+        Component: About
+    },
     {
         path: SHOP_ROUTE,
         Component: Main

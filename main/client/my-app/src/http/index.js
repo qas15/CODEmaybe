@@ -16,7 +16,35 @@ const authInterceptor = config => {
     }
     return config;
 };
+export async function get(addr, data) {
+    try {
+        return (await fetch(`http://localhost:5000/${addr}?${new URLSearchParams(data)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        })).json();
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
 
+// и для POST запросов
+export async function post(addr, data) {
+    try {
+        return (await fetch('http://localhost:5000/'+addr, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: 'include',
+        })).json();
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
 
 const errorInterceptor = (error) => {
     if (error.response && error.response.status === 401) {
