@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ErrorResponse, getProfile } from '../http/userAPI';
+import "../styles/Profile.css";
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
     const [error, setError] = useState(null);
-
-    const { user } = useContext(Context);
 
     useEffect(() => {
         // Запрос на сервер для получения данных пользователя по email
