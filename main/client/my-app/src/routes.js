@@ -5,6 +5,7 @@ import {
     PROFILE,
     PROFILES,
     REVIEWS
+    ABOUT
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
@@ -13,8 +14,8 @@ import Profile from './pages/Profile';
 import Profiles from './pages/Profiles';
 import Reviews from "./pages/Reviews";
 
-
 import Main from './pages/Main'
+import About from "./pages/About";
 
 export const authRoutes = [
     {
@@ -24,12 +25,12 @@ export const authRoutes = [
 ]
 export const publicRoutes = [
     {
-        path: SHOP_ROUTE,
-        Component: Main
+        path: ABOUT,
+        Component: About
     },
     {
-        path: PROFILES,
-        Component: Profiles
+        path: SHOP_ROUTE,
+        Component: Main
     },
     {
         path: LOGIN_ROUTE,

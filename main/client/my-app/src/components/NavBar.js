@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { Context } from '../AppContextProvider'; // Импорт контекста
 import { useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
+import '../styles/NavBar.css'
 import { logout } from '../http/userAPI';
+
 
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста
@@ -33,13 +35,6 @@ const NavBar = () => {
                     SITE
                 </Nav.Link>
                 <Nav className="ml-auto" style={{ color: 'white' }}>
-                    <Button
-                        variant="outline-light"
-                        onClick={() => navigate('/profiles')}
-                        className="ms-2"
-                    >
-                        Профили
-                    </Button>
 
                     {user.isAuth && (
                         <Button

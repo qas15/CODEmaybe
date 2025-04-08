@@ -1,3 +1,5 @@
+import profile from "../pages/Profile";
+
 const SERVER_ADDR = "http://localhost:5000";
 
 
@@ -163,16 +165,12 @@ export async function logout() {
     return null;
 }
 
-export async function getProfiles() {
-    const result = await get(`${SERVER_ADDR}/api/user/get_profiles`, {});
-    
-    console.log(result);
-    
-    let ret = [];
-    for (let profile of result) {
-        ret.push(
-            new ProfileResponse(profile["name"], profile["email"], profile["age"], profile["phone"])
-        );
-    }
-    return ret;
+
+export async function HandleSubmit(name, surname, phone, email, age, hobbies, detailes) {
+    const response = await getProfile()
+    const gmail = response.email
+    console.log(name, surname, phone, email, age, hobbies, detailes)
+    await get(`${SERVER_ADDR}/api/user/update`, {name, email: gmail, age, phone});
+    return null;
 }
+

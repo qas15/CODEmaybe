@@ -87,6 +87,39 @@ class UserController {
         const token = generateJwt(req.user.id, req.user.email, req.user.role);
         return res.json({ token });
     }
+    async updateProfile(req, res, next) {
+        try {
+            const { name, surname, age, phone, hobbies, details, email } = req.body;  // Данные, которые мы хотим обновить
+
+            // Проверка на обязательные поля
+            if (!name || !surname || !age || !phone) {
+                return next(ApiError.badRequest('Некорректные данные для обновления профиля'));
+            }
+
+            // Находим пользователя по его ID
+            const user = await this.getUserByEmail(email);
+            if (!user) {
+                return console.log('Пользователь не найден')
+            }
+            console.log(user)
+            // Обновляем информацию о пользователе
+            user.name = name || user.name;
+            user.surname = surname || user.surname;
+            user.age = age || user.age;
+            user.phone = phone || user.phone;
+            user.hobbies = hobbies || user.hobbies;
+            user.details = details || user.details;
+
+            // Сохраняем изменения в базе данных
+            await user.save();
+
+            // Возвращаем обновленного пользователя
+            return res.json(user);
+        } catch (e) {
+            console.error(e);
+            return res.status(500).json({ message: 'Ошибка при обновлении данных пользователя' });
+        }
+    }
 }
 
 module.exports = new UserController();
