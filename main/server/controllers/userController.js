@@ -30,7 +30,7 @@ class UserController {
     }
 
     async registration(req, res, next) {
-        const { name, surname, age, phone, email, password, role } = req.body;
+        const { name, surname, age, phone, email, password, role, hobbies, details } = req.body;
 
         // Проверяем, что все обязательные параметры переданы
         if (!name || !surname || !email || !password || !age || !phone) {
@@ -55,6 +55,8 @@ class UserController {
             email,
             password: hashPassword,
             role: role || 'USER',
+            hobbies: hobbies,
+            details: details
         });
 
 

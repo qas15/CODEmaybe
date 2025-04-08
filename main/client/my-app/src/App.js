@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import Main from './pages/Main';
 import Profile from './pages/Profile';
 import Profiles from './pages/Profiles';
+import AppRouter from "./components/AppRouter";
 
 const App = observer(() => {
     const { user, setUser } = useContext(Context); // Получаем user и setUser из контекста
@@ -50,17 +51,17 @@ const App = observer(() => {
     return (
         <BrowserRouter>
             <NavBar />
-            <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/" element={<Main />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/profiles" element={<Profiles />} />
-            </Routes>
+            <AppRouter />
         </BrowserRouter>
     );
 });
-
+//<Routes>
+//<Route path="/login" element={<Login />} />
+//<Route path="/register" element={<Register />} />
+//<Route path="/" element={<Main />} />
+//<Route path="/profile" element={<Profile />} />
+//<Route path="/profiles" element={<Profiles />} />
+//</Routes>
 export default App;
 
 

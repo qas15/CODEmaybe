@@ -76,6 +76,9 @@ export async function registration(name, surname, age, phone, email, password) {
         phone,
         email,
         password,
+        role: 'USER',
+        hobbies: null,
+        details: null
     });
 
     if (result["error"]) {
