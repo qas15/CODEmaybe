@@ -5,8 +5,6 @@ const Profile = () => {
     const [userData, setUserData] = useState(null);
     const [error, setError] = useState(null);
 
-    const { user } = useContext(Context);
-
     useEffect(() => {
         // Запрос на сервер для получения данных пользователя по email
         const fetchUserData = async () => {
