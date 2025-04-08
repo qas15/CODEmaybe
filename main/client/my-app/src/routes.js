@@ -3,7 +3,6 @@ import {
     REGISTRATION_ROUTE,
     SHOP_ROUTE,
     PROFILE,
-    PROFILES,
     MAP_ROUTE,
     ABOUT
 } from "./utils/consts";
@@ -11,7 +10,6 @@ import {
 import Log from '../src/pages/Login'
 import Reg from './pages/Register'
 import Profile from './pages/Profile';
-import Profiles from './pages/Profiles';
 import Main from './pages/Main'
 import OpenLayersMap from "./components/Map";
 import About from "./pages/About";

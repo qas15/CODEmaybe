@@ -136,7 +136,7 @@ export async function logout() {
 
 
 export async function HandleSubmit(name, surname, phone, email, age, hobbies, detailes) {
-    const response = await getProfile()
+    const response = await getProfile();
     const gmail = response.email
     console.log(name, surname, phone, email, age, hobbies, detailes)
     await get(`${SERVER_ADDR}/api/user/update`, {name, email: gmail, age, phone});
