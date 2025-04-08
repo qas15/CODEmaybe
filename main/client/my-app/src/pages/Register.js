@@ -3,6 +3,7 @@ import { Container, Form, Button, Row, Card, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { ErrorResponse, registration } from "../http/userAPI";
 import { update } from "../AppContextProvider";  // Импорт контекста
+import "../styles/Auth.css";
 
 const Register = () => {
     const [name, setName] = useState('');

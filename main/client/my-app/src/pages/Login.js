@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { login } from '../http/userAPI'; // Импорт функции login
 import { update } from '../AppContextProvider'; // Импорт контекста
 import { Link } from 'react-router-dom'; // Импорт Link для навигации
+import "../styles/Auth.css";
 
 const Login = () => {
     const navigate = useNavigate();

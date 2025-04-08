@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ErrorResponse, getProfile } from '../http/userAPI';
+import "../styles/Profile.css";
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
