@@ -2,22 +2,21 @@ import React, { useContext } from 'react';
 import { Context } from '../AppContextProvider'; // Импорт контекста
 import { useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
+<<<<<<< HEAD
 import '../styles/NavBar.css'; // Подключаем файл с стилями
+=======
+import { logout } from '../http/userAPI';
+>>>>>>> cf9b5c9fcb3325be6bc38280c009ebbd4b3e97eb
 
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста
     const navigate = useNavigate();
 
     const logOut = () => {
-        localStorage.removeItem('token');
-        setUser({});  // Вызываем setUser, чтобы сбросить данные пользователя
-        setIsAuth(false);  // Сбрасываем статус авторизации
-
-        // Редирект на главную страницу и перезагрузка
-        navigate('/');
-        setTimeout(() => {
-            window.location.reload();
-        }, 200); // Перезагрузка страницы после редиректа
+        logout().then((r) => {
+            setUser({});  // Вызываем setUser, чтобы сбросить данные пользователя
+            setIsAuth(false);  // Сбрасываем статус авторизации
+        }).catch((e) => {});
     };
 
     const handleRedirect = () => {

@@ -1,15 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import { observer } from 'mobx-react-lite';
 import { Context } from './AppContextProvider';  // Импортируем Context
 import { check } from './http/userAPI';
 import { Spinner } from 'react-bootstrap';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Main from './pages/Main';
-import Profile from './pages/Profile';
-import Profiles from './pages/Profiles';
 import AppRouter from "./components/AppRouter";
 
 const App = observer(() => {

@@ -5,6 +5,10 @@ import {HandleSubmit} from "../http/userAPI";
 import {get} from "../http"; // Импорт контекста
 // import '../styles/Profile.css'; // Подключаем файл с стилями
 
+import React, { useEffect, useState } from 'react';
+import { ErrorResponse, getProfile } from '../http/userAPI';
+import "../styles/Profile.css";
+
 const Profile = () => {
     const [userData, setUserData] = useState(null);
     const [error, setError] = useState(null);
@@ -14,26 +18,23 @@ const Profile = () => {
     const email = user?.email;
 
     useEffect(() => {
-        if (!email) {
-            window.location.reload();
-            setError('Email not available');
-            return;
-        }
-
+        // Запрос на сервер для получения данных пользователя по email
         const fetchUserData = async () => {
             try {
-                const response = await get(`http://localhost:5000/api/user/my_profile`);
-                if (response.status === 200) {
-                    setUserData(response.data);
-                    setUpdatedData(response.data);  // Инициализируем данные для редактирования
-                    setError(null);
+                const response = await getProfile();
+
+                if (response instanceof ErrorResponse) {
+                    setUserData(null);
+                    setError(response.message);
+                    return;
                 }
+
+                setUserData(response); 
+                 // Если пользователь найден, сохраняем его данные
+                setError(null);           // Если ошибка, очищаем ошибку
             } catch (err) {
-                if (err.response && err.response.status === 404) {
-                    setError('User not found');
-                } else {
-                    setError(err.message);
-                }
+                setUserData(null);            // Если ошибка, очищаем данные
+                setError('Пользователь не найден');  // Устанавливаем сообщение об ошибке
             }
         };
 

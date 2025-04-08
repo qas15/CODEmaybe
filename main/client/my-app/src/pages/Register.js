@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Container, Form, Button, Row, Card, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { registration } from "../http/userAPI";
-import { Context } from "../AppContextProvider";  // Импорт контекста
+import { ErrorResponse, registration } from "../http/userAPI";
+import { update } from "../AppContextProvider";  // Импорт контекста
+import "../styles/Auth.css";
 
 const Register = () => {
-    const { user, setUser, setIsAuth } = useContext(Context);
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [age, setAge] = useState('');
@@ -47,10 +47,15 @@ const Register = () => {
         setLoading(true);
         const userData = await registration(name, surname, age, phone, email, password);
 
-        setUser(userData);
-        setIsAuth(true);  // Устанавливаем пользователя как аутентифицированного
+        if (userData instanceof ErrorResponse) {
+            console.log(userData);
+            setError(userData.message);
+            return;
+        }
 
-            // Перенаправление на главную страницу
+        await update();
+
+        // Перенаправление на главную страницу
         navigate("/");
     };
 
