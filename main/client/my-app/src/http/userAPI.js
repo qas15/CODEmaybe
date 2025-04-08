@@ -10,6 +10,13 @@ export class ErrorResponse {
     }
 }
 
+export class CommentResponse {
+    constructor (stars, text) {
+        this.stars = stars;
+        this.text = text;
+    }
+}
+
 export class SuccessResponse {}
 
 export class RegisterResponse extends SuccessResponse {
@@ -103,6 +110,19 @@ export async function login(email, password) {
     return new LoginResponse(result["redirect_url"]);
 }
 
+export async function NewComment(stars, text) {
+    const result = await post(`${SERVER_ADDR}/api/comments/new`, {
+        stars,
+        text,
+    });
+    
+    if (result["error"]) {
+        return new ErrorResponse(result["error"], result["message"]);
+    }
+
+    return new SuccessResponse();
+}
+
 export async function check() {
     const result = await get(`${SERVER_ADDR}/api/auth/check`, {});
 
@@ -120,6 +140,17 @@ export async function getProfile() {
         return new ErrorResponse("not_authorized", "Не авторизован");
     };
     return new ProfileResponse(result["name"], result["email"], result["age"], result["phone"]);
+}
+
+export async function getComments() {
+    const result = await get(`${SERVER_ADDR}/api/comments/get`, {});
+    let ret = []
+    for (let profile of result) {
+        ret.push(
+            new CommentResponse(profile["stars"], profile["text"])
+        ); 
+    }
+    return ret
 }
 
 export async function getOtherProfile(id) {

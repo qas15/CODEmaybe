@@ -109,6 +109,15 @@ const NavBar = () => {
                             Авторизация
                         </Button>
                     )}
+
+
+                    <Button
+                        variant="outline-light"
+                        onClick={() => navigate('/reviews')}
+                        className="ms-2"
+                    >
+                        Отзывы
+                    </Button>
                 </Nav>
             </Container>
         </Navbar>

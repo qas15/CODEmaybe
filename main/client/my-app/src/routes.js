@@ -5,12 +5,14 @@ import {
     PROFILE,
     ABOUT,
     TARIFFS,
+    REVIEWS,
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
 import Reg from './pages/Register'
 import Profile from './pages/Profile';
 import Tariffs from './pages/Plans'
+import Reviews from "./pages/Reviews";
 
 import Main from './pages/Main'
 import About from "./pages/About";
@@ -41,5 +43,9 @@ export const publicRoutes = [
     {
         path: REGISTRATION_ROUTE,
         Component: Reg
+    },
+    {
+        path: REVIEWS,
+        Component: Reviews
     },
 ]
