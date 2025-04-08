@@ -1,41 +1,36 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import { Context } from '../AppContextProvider'; // Импорт контекста
-import '../styles/Profile.css'; // Подключаем файл с стилями
+import React, { useEffect, useState } from 'react';
+import { ErrorResponse, getProfile } from '../http/userAPI';
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
     const [error, setError] = useState(null);
 
     const { user } = useContext(Context);
-    const email = user?.email;
 
     useEffect(() => {
-        if (!email) {
-            window.location.reload()
-            setError('Email not available');
-            return;
-        }
-
+        // Запрос на сервер для получения данных пользователя по email
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/user/${email}`);
+                const response = await getProfile();
 
-                if (response.status === 200) {
-                    setUserData(response.data);
-                    setError(null);
+                if (response instanceof ErrorResponse) {
+                    setUserData(null);
+                    setError(response.message);
+                    return;
                 }
+
+                setUserData(response); 
+                 // Если пользователь найден, сохраняем его данные
+                setError(null);           // Если ошибка, очищаем ошибку
             } catch (err) {
-                if (err.response && err.response.status === 404) {
-                    setError('User not found');
-                } else {
-                    setError(err.message);
-                }
+                setUserData(null);            // Если ошибка, очищаем данные
+                setError('Пользователь не найден');  // Устанавливаем сообщение об ошибке
             }
         };
 
         fetchUserData();
-    }, [email]);
+    }, []);  // Эффект выполняется при монтировании компонента
+  
     return (
         <div className="profile-container">
             <div className="profile-card">
