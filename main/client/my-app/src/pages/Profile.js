@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ErrorResponse, getProfile, logout } from '../http/userAPI';
+import { ErrorResponse, getProfile } from '../http/userAPI';
 
 const Profile = () => {
     const [user, setUser] = useState(null);

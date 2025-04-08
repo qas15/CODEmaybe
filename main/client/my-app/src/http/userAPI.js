@@ -25,7 +25,7 @@ export class SessionCheckResponse extends SuccessResponse {
     }
 }
 
-export class ProfileResonse extends SuccessResponse {
+export class ProfileResponse extends SuccessResponse {
     constructor (name, email, age, phone) {
         super();
         this.name = name;
@@ -71,7 +71,7 @@ async function post(addr, data) {
 
 export async function registration(name, surname, age, phone, email, password) {
     const result = await post(`${SERVER_ADDR}/api/auth/register`, {
-        "name": `${name} ${surname}`,
+        "username": `${name} ${surname}`,
         age,
         phone,
         email,
@@ -114,17 +114,31 @@ export async function getProfile() {
     if (Object.keys(result).length <= 0) {
         return new ErrorResponse("not_authorized", "Не авторизован");
     };
-    return new ProfileResonse(result["name"], result["email"], result["age"], result["phone"]);
+    return new ProfileResponse(result["name"], result["email"], result["age"], result["phone"]);
 }
 
 export async function getOtherProfile(id) {
     const result = await get(`${SERVER_ADDR}/api/user/my_profile`, {
         "user_id": id,
     });
-    return new ProfileResonse(result["name"], result["email"], result["age"], result["phone"]);
+    return new ProfileResponse(result["name"], result["email"], result["age"], result["phone"]);
 }
 
 export async function logout() {
     await post(`${SERVER_ADDR}/api/auth/logout`);
     return null;
+}
+
+export async function getProfiles() {
+    const result = await get(`${SERVER_ADDR}/api/user/get_profiles`, {});
+    
+    console.log(result);
+    
+    let ret = [];
+    for (let profile of result) {
+        ret.push(
+            new ProfileResponse(profile["name"], profile["email"], profile["age"], profile["phone"])
+        );
+    }
+    return ret;
 }

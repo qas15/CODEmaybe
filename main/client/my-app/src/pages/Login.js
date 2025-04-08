@@ -1,12 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Container, Card, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../http/userAPI'; // Импорт функции login
-import { Context } from '../AppContextProvider'; // Импорт контекста
+import { update } from '../AppContextProvider'; // Импорт контекста
 import { Link } from 'react-router-dom'; // Импорт Link для навигации
 
 const Login = () => {
-    const { user, setIsAuth } = useContext(Context); // Получаем user и setIsAuth из контекста
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +15,8 @@ const Login = () => {
         try {
             // Выполняем авторизацию
             await login(email, password);
-            setIsAuth(true); // Устанавливаем флаг авторизации
+            await update();
+            
             navigate('/'); // Перенаправление на страницу магазина
         } catch (e) {
             alert('Ошибка при входе: ' + e.message || 'Неизвестная ошибка');
