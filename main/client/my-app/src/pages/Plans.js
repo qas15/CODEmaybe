@@ -1,25 +1,77 @@
 import React from 'react';
-import { FaDatabase, FaPhoneAlt, FaWifi, FaInfinity, FaCalendarCheck, FaTrain,
-    FaGlobeEurope, FaShieldAlt, FaLock, FaHandHoldingUsd, FaSlidersH,
-    FaGift, FaShareAlt, FaExchangeAlt, FaStore, FaSnowflake } from 'react-icons/fa';
+import { FaDatabase, FaPhoneAlt, FaWifi, FaInfinity, FaCalendarCheck,
+    FaTrain, FaGlobeEurope, FaShieldAlt, FaLock, FaHandHoldingUsd,
+    FaSlidersH, FaGift, FaShareAlt, FaExchangeAlt, FaStore,
+    FaSnowflake, FaFire, FaBolt, FaLeaf, FaTachometerAlt } from 'react-icons/fa';
 import '../styles/Tariff.css';
 
 const Tariff = () => {
-    const mainFeatures = [
+    const tariffs = [
         {
-            icon: <FaDatabase className="feature-icon" />,
-            title: "30 ГБ",
-            description: "+30 ГБ к тарифу"
+            name: "МОЙ ЗЕЛЁНЫЙ",
+            badge: "НОВИНКА",
+            price: "500 ₽/мес",
+            features: [
+                { icon: <FaDatabase />, title: "15 ГБ", desc: "+10 ГБ к тарифу" },
+                { icon: <FaPhoneAlt />, title: "300 минут", desc: "на номера России" },
+                { icon: <FaLeaf />, title: "Экологичный", desc: "Часть прибыли идет на экопроекты" }
+            ],
+            isPopular: false
         },
         {
-            icon: <FaPhoneAlt className="feature-icon" />,
-            title: "600 минут",
-            description: "на номера России и безлимит на номера t2 России"
+            name: "МОЙ ОНЛАЙН+",
+            badge: "ХИТ",
+            price: "800 ₽/мес",
+            features: [
+                { icon: <FaDatabase />, title: "30 ГБ", desc: "+30 ГБ к тарифу" },
+                { icon: <FaPhoneAlt />, title: "600 минут", desc: "на номера России" },
+                { icon: <FaWifi />, title: "Домашний интернет", desc: "от 100 Мбит/с" }
+            ],
+            isPopular: true
         },
         {
-            icon: <FaWifi className="feature-icon" />,
-            title: "Домашний интернет",
-            description: "от 100 Мбит/с"
+            name: "ТУРБО",
+            badge: "ТОП",
+            price: "1200 ₽/мес",
+            features: [
+                { icon: <FaBolt />, title: "50 ГБ", desc: "Высокоскоростной интернет" },
+                { icon: <FaTachometerAlt />, title: "Безлимит", desc: "на соцсети и мессенджеры" },
+                { icon: <FaPhoneAlt />, title: "1000 минут", desc: "на все номера России" }
+            ],
+            isPopular: false
+        },
+        {
+            name: "ПРЕМИУМ",
+            badge: "VIP",
+            price: "2000 ₽/мес",
+            features: [
+                { icon: <FaInfinity />, title: "Безлимит", desc: "интернет на максимальной скорости" },
+                { icon: <FaGlobeEurope />, title: "Роуминг", desc: "включено 10 ГБ в Европе" },
+                { icon: <FaPhoneAlt />, title: "Безлимит", desc: "минут на все номера" }
+            ],
+            isPopular: false
+        },
+        {
+            name: "МИНИМАЛ",
+            badge: "ЭКОНОМ",
+            price: "300 ₽/мес",
+            features: [
+                { icon: <FaDatabase />, title: "5 ГБ", desc: "Базовый пакет интернета" },
+                { icon: <FaPhoneAlt />, title: "100 минут", desc: "на номера России" },
+                { icon: <FaLeaf />, title: "Без излишеств", desc: "Только самое необходимое" }
+            ],
+            isPopular: false
+        },
+        {
+            name: "ИГРОВОЙ",
+            badge: "GAMER",
+            price: "1500 ₽/мес",
+            features: [
+                { icon: <FaBolt />, title: "50 ГБ", desc: "Ультраскоростной интернет" },
+                { icon: <FaTachometerAlt />, title: "Low Ping", desc: "Оптимизация для игр" },
+                { icon: <FaShieldAlt />, title: "Защита DDoS", desc: "Для стримеров и геймеров" }
+            ],
+            isPopular: false
         }
     ];
 
@@ -27,147 +79,96 @@ const Tariff = () => {
         {
             icon: <FaInfinity className="advantage-icon" />,
             title: "БЕЗЛИМИТНЫЙ ТРАФИК",
-            description: "Telegram, WhatsApp, TikTok, ВКонтакте, Одноклассники, VK Мессенджер, Rutube, VK Видео, VK Клипы, VK Музыка"
+            description: "Соцсети, мессенджеры и музыка без ограничений"
         },
         {
             icon: <FaCalendarCheck className="advantage-icon" />,
-            title: "ВЕЧНЫЕ МИНУТЫ И ГБ",
-            description: "Оставшиеся минуты и ГБ не сгорают"
-        },
-        {
-            icon: <FaTrain className="advantage-icon" />,
-            title: "В ПОЕЗДКАХ ПО РОССИИ",
-            description: "Пользуйтесь минутами и ГБ в поездках как дома"
-        },
-        {
-            icon: <FaGlobeEurope className="advantage-icon" />,
-            title: "РАСХОДЫ ЗА ГРАНИЦЕЙ",
-            description: "Исходящие звонки из популярных стран на номера t2 России включены в тариф"
+            title: "ВЕЧНЫЕ ГИГАБАЙТЫ",
+            description: "Неиспользованный трафик переносится на следующий месяц"
         },
         {
             icon: <FaShieldAlt className="advantage-icon" />,
-            title: "СВЯЗЬ БЕЗ МИНУСОВ",
-            description: "Если закончились деньги на счете – пользуйтесь бесплатно самыми необходимыми сервисами"
+            title: "ЗАЩИТА ОТ МОШЕННИКОВ",
+            description: "Встроенная система безопасности в каждом тарифе"
         },
         {
-            icon: <FaLock className="advantage-icon" />,
-            title: "ПРОДУКТЫ БЕЗОПАСНОСТИ",
-            description: "Блокировка мошенников, антиспам и другие продукты безопасности в вашем тарифе"
-        },
-        {
-            icon: <FaHandHoldingUsd className="advantage-icon" />,
-            title: "ЧЕСТНЫЕ ТАРИФЫ",
-            description: "Пользуйтесь минутами и ГБ в тарифе даже при отрицательном балансе"
-        },
-        {
-            icon: <FaSlidersH className="advantage-icon" />,
-            title: "УПРАВЛЯЙТЕ ТАРИФОМ",
-            description: "Гибкие настройки под ваши потребности"
-        }
-    ];
-
-    const specialOffers = [
-        {
-            icon: <FaGift className="offer-icon" />,
-            title: "МЕСЯЦ БЕСПЛАТНОГО ДОМАШНЕГО ИНТЕРНЕТА",
-            description: "На любой скорости – при первом подключении"
-        },
-        {
-            icon: <FaShareAlt className="offer-icon" />,
-            title: "ДЕЛИТЕСЬ ГИГАБАЙТАМИ",
-            description: "Делитесь интернет-трафиком с другими абонентами t2 по всей стране"
-        },
-        {
-            icon: <FaExchangeAlt className="offer-icon" />,
-            title: "МЕНЯЙТЕ МИНУТЫ И ГБ",
-            description: "На скидки и сервисы"
-        },
-        {
-            icon: <FaStore className="offer-icon" />,
-            title: "МАРКЕТ t2",
-            description: "Продавайте и покупайте ГБ, минуты и SMS"
+            icon: <FaExchangeAlt className="advantage-icon" />,
+            title: "ОБМЕН ТРАФИКА",
+            description: "Меняйте минуты на гигабайты и обратно"
         }
     ];
 
     return (
         <div className="tariff-page">
             {/* Hero Section */}
-            <header className="tariff-header">
+            <header className="tariff-hero">
                 <div className="container">
-                    <h1>МОЙ ОНЛАЙН+</h1>
-                    <div className="tariff-badge">ХИТ</div>
+                    <h1>ВЫБЕРИТЕ СВОЙ ТАРИФ</h1>
+                    <p>Подберите идеальное решение для ваших потребностей</p>
                 </div>
             </header>
 
-            {/* Main Tariff Card */}
-            <main className="tariff-main">
-                <section className="tariff-card">
-                    <div className="container">
-                        <div className="tariff-features">
-                            {mainFeatures.map((feature, index) => (
-                                <div className="feature" key={index}>
-                                    {feature.icon}
-                                    <h3>{feature.title}</h3>
-                                    <p>{feature.description}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="tariff-actions">
-                            <div className="price">800 ₽/мес</div>
-                            <button className="buy-button">Купить</button>
-                            <div className="price-freeze">
-                                <FaSnowflake className="freeze-icon" />
-                                <span>ЗАМОРОЗИЛИ ЦЕНУ ДО КОНЦА 2026 ГОДА</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Advantages Section */}
-                <section className="advantages">
-                    <div className="container">
-                        <h2>ПРЕИМУЩЕСТВА ТАРИФА</h2>
-                        <div className="advantages-grid">
-                            {advantages.map((advantage, index) => (
-                                <div className="advantage" key={index}>
-                                    {advantage.icon}
-                                    <h3>{advantage.title}</h3>
-                                    <p>{advantage.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* Special Offers Section */}
-                <section className="special-offers">
-                    <div className="container">
-                        <h2>СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ</h2>
-                        <div className="offers-grid">
-                            {specialOffers.map((offer, index) => (
-                                <div className="offer" key={index}>
-                                    {offer.icon}
-                                    <h3>{offer.title}</h3>
-                                    <p>{offer.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            {/* Footer */}
-            <footer className="tariff-footer">
+            {/* Tariffs Grid */}
+            <section className="tariffs-section">
                 <div className="container">
-                    <p>© 2025 Tele2. Все права защищены.</p>
-                    <div className="footer-links">
-                        <a href="#">Пользовательское соглашение</a>
-                        <a href="#">Политика конфиденциальности</a>
-                        <a href="#">Контакты</a>
+                    <div className="tariffs-grid">
+                        {tariffs.map((tariff, index) => (
+                            <div className={`tariff-card ${tariff.isPopular ? 'popular' : ''}`} key={index}>
+                                {tariff.badge && <div className="tariff-badge">{tariff.badge}</div>}
+                                <h2>{tariff.name}</h2>
+                                <div className="price">{tariff.price}</div>
+
+                                <div className="features">
+                                    {tariff.features.map((feature, i) => (
+                                        <div className="feature" key={i}>
+                                            <div className="feature-icon">{feature.icon}</div>
+                                            <div className="feature-text">
+                                                <h3>{feature.title}</h3>
+                                                <p>{feature.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <button className="buy-button">
+                                    {tariff.isPopular ? 'ПОДКЛЮЧИТЬ' : 'ВЫБРАТЬ'}
+                                </button>
+
+                                {tariff.isPopular && (
+                                    <div className="price-freeze">
+                                        <FaSnowflake className="freeze-icon" />
+                                        <span>ЦЕНА ЗАМОРОЖЕНА ДО 2026 ГОДА</span>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
-            </footer>
+            </section>
+
+            {/* Advantages Section */}
+            <section className="advantages-section">
+                <div className="container">
+                    <h2>ПРЕИМУЩЕСТВА TELE2</h2>
+                    <div className="advantages-grid">
+                        {advantages.map((advantage, index) => (
+                            <div className="advantage-card" key={index}>
+                                <div className="advantage-icon">{advantage.icon}</div>
+                                <h3>{advantage.title}</h3>
+                                <p>{advantage.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="cta-section">
+                <div className="container">
+                    <h2>НЕ НАШЛИ ПОДХОДЯЩИЙ ТАРИФ?</h2>
+                    <p>Наши консультанты помогут подобрать оптимальное решение специально для вас</p>
+                </div>
+            </section>
         </div>
     );
 };

@@ -68,16 +68,10 @@ const NavBar = () => {
                                     <span onClick={() => navigate('/tariffs')}>Tariffs</span>
                                 </li>
                                 <li className="menu__item">
-                                    <span onClick={() => navigate('/notify')}>Notify</span>
+                                    <span onClick={() => navigate('/partners')}>Partners</span>
                                 </li>
                                 <li className="menu__item">
-                                    <span onClick={() => navigate('/location')}>Location</span>
-                                </li>
-                                <li className="menu__item">
-                                    <span onClick={() => navigate('/settings')}>Settings</span>
-                                </li>
-                                <li className="menu__item">
-                                    <span onClick={() => navigate('/exit')}>Exit</span>
+                                    <span onClick={() => navigate('/reviews')}>Отзывы</span>
                                 </li>
                             </ul>
                         </nav>
@@ -110,14 +104,6 @@ const NavBar = () => {
                         </Button>
                     )}
 
-
-                    <Button
-                        variant="outline-light"
-                        onClick={() => navigate('/reviews')}
-                        className="ms-2"
-                    >
-                        Отзывы
-                    </Button>
                 </Nav>
             </Container>
         </Navbar>

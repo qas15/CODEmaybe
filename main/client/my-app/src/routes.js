@@ -5,7 +5,7 @@ import {
     PROFILE,
     ABOUT,
     TARIFFS,
-    REVIEWS,
+    REVIEWS, PARTNERS,
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
@@ -16,6 +16,7 @@ import Reviews from "./pages/Reviews";
 
 import Main from './pages/Main'
 import About from "./pages/About";
+import Partners from "./pages/Partners";
 
 export const authRoutes = [
     {
@@ -27,6 +28,10 @@ export const publicRoutes = [
     {
         path: TARIFFS,
         Component: Tariffs
+    },
+    {
+        path: PARTNERS,
+        Component: Partners
     },
     {
         path: ABOUT,
