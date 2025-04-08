@@ -1,19 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
+import { useEffect, useState, useContext } from 'react';
 import { Context } from '../AppContextProvider';
-import {HandleSubmit} from "../http/userAPI";
-import {get} from "../http"; // Импорт контекста
-// import '../styles/Profile.css'; // Подключаем файл с стилями
-
-import React, { useEffect, useState } from 'react';
-import { ErrorResponse, getProfile } from '../http/userAPI';
+import { ErrorResponse, getProfile, HandleSubmit } from '../http/userAPI';
 import "../styles/Profile.css";
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
     const [error, setError] = useState(null);
     const [isEditing, setIsEditing] = useState(false);  // Состояние для режима редактирования
-    const [updatedData, setUpdatedData] = useState({});  // Состояние для хранения изменений
     const { user } = useContext(Context);
     const email = user?.email;
 
@@ -29,8 +22,8 @@ const Profile = () => {
                     return;
                 }
 
-                setUserData(response); 
-                 // Если пользователь найден, сохраняем его данные
+                setUserData(response);
+                // Если пользователь найден, сохраняем его данные
                 setError(null);           // Если ошибка, очищаем ошибку
             } catch (err) {
                 setUserData(null);            // Если ошибка, очищаем данные
@@ -40,30 +33,29 @@ const Profile = () => {
 
         fetchUserData();
     }, [email]);
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setUpdatedData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
-
     const handleSave = async () => {
         try {
-            const { name, surname, phone, hobbies, details, age } = updatedData;
-
-            const response = await HandleSubmit(name, surname, userData?.age, phone, hobbies, details, email);
+            const { name, surname, phone, email, age, hobbies, detailes } = userData;
+            console.log(name, surname, phone, email, age, hobbies, detailes);
+            // Передаем данные напрямую в HandleSubmit
+            const response = await HandleSubmit(name, surname, phone, email, age, hobbies, detailes);
+            console.log(response);
 
             if (response) {
-                setUserData(updatedData);
-                setIsEditing(false);
+                setIsEditing(false); // Закрываем режим редактирования
             }
         } catch (err) {
             setError(err.message);  // Обработка ошибки
         }
     };
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setUserData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
     return (
         <div className="container-fluid bg-white mt-5 mb-5">
             <div className="row">
@@ -75,11 +67,8 @@ const Profile = () => {
                         src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
                         alt="User Avatar"
                     />
-                    {userData ? (
-                        <span className="font-weight-bold">{userData.name}</span>
-                    ) : (
-                        <span className="font-weight-bold">Загрузка...</span>
-                    )}
+
+                    <span className="font-weight-bold">{user.name}</span>
                     {userData ? (
                         <span className="text-black-50">{userData.email}</span>
                     ) : (
@@ -104,7 +93,7 @@ const Profile = () => {
                                         className="form-control"
                                         placeholder="Имя"
                                         name="name"
-                                        value={isEditing ? updatedData.name : userData.name || ''}
+                                        value={isEditing ? userData.name : userData.name || ''}
                                         disabled={!isEditing}
                                         onChange={handleInputChange}
                                     />
@@ -116,7 +105,7 @@ const Profile = () => {
                                         className="form-control"
                                         placeholder="Фамилия"
                                         name="surname"
-                                        value={isEditing ? updatedData.surname : userData.surname || ''}
+                                        value={isEditing ? userData.surname : userData.surname || ''}
                                         disabled={!isEditing}
                                         onChange={handleInputChange}
                                     />
@@ -134,7 +123,7 @@ const Profile = () => {
                                     className="form-control"
                                     placeholder="Номер телефона"
                                     name="phone"
-                                    value={isEditing ? updatedData.phone : userData.phone || ''}
+                                    value={isEditing ? userData.phone : userData.phone || ''}
                                     disabled={!isEditing}
                                     onChange={handleInputChange}
                                 />
@@ -145,32 +134,6 @@ const Profile = () => {
 
                 {/* Правая часть с дополнительной информацией */}
                 <div className="col-md-4 d-flex flex-column p-3 py-5">
-                    <div className="col-md-12">
-                        <label className="labels">Хобби</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Нет хобби"
-                            name="hobbies"
-                            value={isEditing ? updatedData.hobbies : userData?.hobbies || ''}
-                            disabled={!isEditing}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <br />
-                    <div className="col-md-12">
-                        <label className="labels">Дополнительные детали</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Нет деталей"
-                            name="details"
-                            value={isEditing ? updatedData.details : userData?.details || ''}
-                            disabled={!isEditing}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
                     {/* Кнопки редактирования и сохранения */}
                     {!isEditing ? (
                         <button
@@ -194,6 +157,7 @@ const Profile = () => {
 };
 
 export default Profile;
+
 
 
 

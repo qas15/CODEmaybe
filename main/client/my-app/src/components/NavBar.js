@@ -2,11 +2,9 @@ import React, { useContext } from 'react';
 import { Context } from '../AppContextProvider'; // Импорт контекста
 import { useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
-<<<<<<< HEAD
-import '../styles/NavBar.css'; // Подключаем файл с стилями
-=======
+import '../styles/NavBar.css'
 import { logout } from '../http/userAPI';
->>>>>>> cf9b5c9fcb3325be6bc38280c009ebbd4b3e97eb
+
 
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста
@@ -37,13 +35,6 @@ const NavBar = () => {
                     SITE
                 </Nav.Link>
                 <Nav className="ml-auto" style={{ color: 'white' }}>
-                    <Button
-                        variant="outline-light"
-                        onClick={() => navigate('/profiles')}
-                        className="ms-2"
-                    >
-                        Профили
-                    </Button>
 
                     {user.isAuth && (
                         <Button
