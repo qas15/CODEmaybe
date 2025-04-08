@@ -3,13 +3,14 @@ import {
     REGISTRATION_ROUTE,
     SHOP_ROUTE,
     PROFILE,
-    ABOUT
+    ABOUT,
+    TARIFFS,
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
 import Reg from './pages/Register'
 import Profile from './pages/Profile';
-
+import Tariffs from './pages/Plans'
 
 import Main from './pages/Main'
 import About from "./pages/About";
@@ -21,6 +22,10 @@ export const authRoutes = [
     }
 ]
 export const publicRoutes = [
+    {
+        path: TARIFFS,
+        Component: Tariffs
+    },
     {
         path: ABOUT,
         Component: About
