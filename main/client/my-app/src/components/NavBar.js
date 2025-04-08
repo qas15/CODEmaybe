@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { Context } from '../AppContextProvider'; // Импорт контекста
 import { useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
+import '../styles/NavBar.css'
 import { logout } from '../http/userAPI';
+
 
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const logOut = () => {
         logout().then((r) => {
@@ -16,7 +18,7 @@ const NavBar = () => {
     };
 
     const handleRedirect = () => {
-        history('/');
+        navigate('/');
         setTimeout(() => {
             window.location.reload();
         }, 200);
@@ -33,18 +35,11 @@ const NavBar = () => {
                     SITE
                 </Nav.Link>
                 <Nav className="ml-auto" style={{ color: 'white' }}>
-                    <Button
-                        variant="outline-light"
-                        onClick={() => history('/profiles')}
-                        className="ms-2"
-                    >
-                        Профили
-                    </Button>
 
                     {user.isAuth && (
                         <Button
                             variant="outline-light"
-                            onClick={() => history('/profile')}
+                            onClick={() => navigate('/profile')}
                             className="ms-2"
                         >
                             Профиль
@@ -62,7 +57,7 @@ const NavBar = () => {
                     ) : (
                         <Button
                             variant="outline-light"
-                            onClick={() => history('/login')}
+                            onClick={() => navigate('/login')}
                             className="ms-2"
                         >
                             Авторизация
@@ -75,6 +70,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
 
 
 

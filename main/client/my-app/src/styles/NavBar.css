@@ -1,73 +1,33 @@
-/* NavBar.css */
+/* CSS для кнопок в Navbar */
+@font-face {
+    font-family: 'HalvarBreitt';
+    src: url('../../../../../shrift/shrift/._HalvarBreitt2-XBd.otf') format('opentype'); /* Путь от корня проекта */
+    font-weight: normal;
+    font-style: normal;
+}
+.navbar .btn {
+    background-color: #7fff00; /* Салатовый цвет фона */
+    color: black; /* Черный цвет шрифта */
+    border-radius: 25px; /* Закругленные углы */
+    border: none; /* Убираем стандартную рамку */
+    padding: 10px 20px; /* Увеличиваем отступы для удобства */
+    font-weight: 500;
+    font-family: 'HalvarBreitt', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Плавные эффекты */
+}
 
-/* Стиль для всего Navbar */
-.Navbar {
-    background-color: #343a40;
-    padding: 10px 20px;
+.navbar .btn:hover {
+    background-color: #66ff33; /* Более темный салатовый при наведении */
+    transform: scale(1.05); /* Немного увеличиваем кнопку при наведении */
+}
+
+.navbar .btn:focus {
+    outline: none; /* Убираем обводку при фокусе */
 }
 
 
-.LOGO {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 0;
-    margin-right: 20px;
-}
 
-.LOGO:hover {
-    color: #f8f9fa; /* Цвет текста при наведении */
-}
 
-/* Стиль для кнопок в Navbar */
-.Nav .btn {
-    border-radius: 5px; /* Округление углов */
-    font-size: 1rem; /* Размер шрифта для кнопок */
-    padding: 8px 20px; /* Отступы внутри кнопок */
-}
-
-.Nav .btn:hover {
-    background-color: #495057; /* Цвет фона при наведении */
-    color: #ffffff; /* Белый цвет текста при наведении */
-}
-
-/* Кнопка для выхода */
-.Nav .btn-outline-light {
-    border-color: #ffffff; /* Белая рамка для кнопки */
-    color: #ffffff; /* Белый цвет текста */
-}
-
-.Nav .btn-outline-light:hover {
-    background-color: #ffffff; /* Белый фон при наведении */
-    color: #343a40; /* Темный текст при наведении */
-}
-
-/* Расположение элементов Nav */
-.Nav {
-    display: flex;
-    align-items: center; /* Выравнивание элементов по центру */
-    margin-left: auto; /* Отодвигаем элементы вправо */
-}
-
-/* Стили для кнопки Авторизация */
-.Nav .btn-outline-light {
-    font-size: 1rem; /* Размер шрифта */
-    padding: 8px 15px; /* Отступы */
-}
-
-/* Если нужно, можно добавить медиа-запросы для адаптивности */
-@media (max-width: 768px) {
-    /* Сжимаем лого и изменяем кнопки для маленьких экранов */
-    .LOGO {
-        font-size: 1.2rem;
-    }
-
-    .Nav .btn {
-        font-size: 0.9rem;
-        padding: 6px 15px;
-    }
-}
 
 
 

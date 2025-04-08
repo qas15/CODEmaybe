@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { ErrorResponse, getProfile } from '../http/userAPI';
+import { useEffect, useState, useContext } from 'react';
+import { Context } from '../AppContextProvider';
+import { ErrorResponse, getProfile, HandleSubmit } from '../http/userAPI';
+import "../styles/Profile.css";
 
 const Profile = () => {
-    const [user, setUser] = useState(null);
+    const [userData, setUserData] = useState(null);
     const [error, setError] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);  // Состояние для режима редактирования
+    const { user } = useContext(Context);
+    const email = user?.email;
 
     useEffect(() => {
         // Запрос на сервер для получения данных пользователя по email
@@ -12,50 +17,146 @@ const Profile = () => {
                 const response = await getProfile();
 
                 if (response instanceof ErrorResponse) {
-                    setUser(null);
+                    setUserData(null);
                     setError(response.message);
                     return;
                 }
 
-                setUser(response); 
-                 // Если пользователь найден, сохраняем его данные
+                setUserData(response);
+                // Если пользователь найден, сохраняем его данные
                 setError(null);           // Если ошибка, очищаем ошибку
             } catch (err) {
-                setUser(null);            // Если ошибка, очищаем данные
+                setUserData(null);            // Если ошибка, очищаем данные
                 setError('Пользователь не найден');  // Устанавливаем сообщение об ошибке
             }
         };
 
         fetchUserData();
-    }, []);  // Эффект выполняется при монтировании компонента
+    }, [email]);
+    const handleSave = async () => {
+        try {
+            const { name, surname, phone, email, age, hobbies, detailes } = userData;
+            console.log(name, surname, phone, email, age, hobbies, detailes);
+            // Передаем данные напрямую в HandleSubmit
+            const response = await HandleSubmit(name, surname, phone, email, age, hobbies, detailes);
+            console.log(response);
 
+            if (response) {
+                setIsEditing(false); // Закрываем режим редактирования
+            }
+        } catch (err) {
+            setError(err.message);  // Обработка ошибки
+        }
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setUserData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
     return (
-        <div>
-            {error && <p>{error}</p>}  {/* Отображаем ошибку, если она есть */}
-            {(!error) && user ? (
-                <div>
-                    <h1>Данные пользователя</h1>
-                    <p>Имя: {user.name}</p>
-                    <p>Возраст: {user.age}</p>       {/* Добавлено поле возраста */}
-                    <p>Email: {user.email}</p>
-                    <p>Телефон: {user.phone}</p>
+        <div className="container-fluid bg-white mt-5 mb-5">
+            <div className="row">
+                {/* Левая часть с изображением профиля */}
+                <div className="col-md-3 d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img
+                        className="rounded-circle mt-5"
+                        width="150px"
+                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                        alt="User Avatar"
+                    />
+
+                    <span className="font-weight-bold">{user.name}</span>
+                    {userData ? (
+                        <span className="text-black-50">{userData.email}</span>
+                    ) : (
+                        <span className="text-black-50">Загрузка...</span>
+                    )}
                 </div>
-            ) : error ? <a href="/">На главную</a> : (
-                <p>Загрузка...</p>  // Если данные еще загружаются, показываем загрузку
-            )}
+
+                {/* Центральная часть с данными пользователя */}
+                <div className="col-md-5 d-flex flex-column p-3 py-5">
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                        <h4 className="text-right">Профиль пользователя</h4>
+                    </div>
+                    {error ? (
+                        <p className="error-message">{error}</p>
+                    ) : (
+                        userData && (
+                            <div className="row mt-2">
+                                <div className="col-md-6">
+                                    <label className="labels">Имя</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Имя"
+                                        name="name"
+                                        value={isEditing ? userData.name : userData.name || ''}
+                                        disabled={!isEditing}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <label className="labels">Фамилия</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Фамилия"
+                                        name="surname"
+                                        value={isEditing ? userData.surname : userData.surname || ''}
+                                        disabled={!isEditing}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                        )
+                    )}
+
+                    {userData && (
+                        <div className="row mt-3">
+                            <div className="col-md-12">
+                                <label className="labels">Телефон</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Номер телефона"
+                                    name="phone"
+                                    value={isEditing ? userData.phone : userData.phone || ''}
+                                    disabled={!isEditing}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Правая часть с дополнительной информацией */}
+                <div className="col-md-4 d-flex flex-column p-3 py-5">
+                    {/* Кнопки редактирования и сохранения */}
+                    {!isEditing ? (
+                        <button
+                            className="btn btn-primary mt-3"
+                            onClick={() => setIsEditing(true)}  // Включаем режим редактирования
+                        >
+                            Редактировать профиль
+                        </button>
+                    ) : (
+                        <button
+                            className="btn btn-success mt-3"
+                            onClick={handleSave}  // Сохраняем изменения
+                        >
+                            Готово
+                        </button>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };
 
 export default Profile;
-
-
-
-
-
-
-
-
 
 
 

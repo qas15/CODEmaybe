@@ -4,7 +4,8 @@ import {
     SHOP_ROUTE,
     PROFILE,
     PROFILES,
-    MAP_ROUTE
+    MAP_ROUTE,
+    ABOUT
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
@@ -13,6 +14,7 @@ import Profile from './pages/Profile';
 import Profiles from './pages/Profiles';
 import Main from './pages/Main'
 import OpenLayersMap from "./components/Map";
+import About from "./pages/About";
 
 export const authRoutes = [
     {
@@ -22,12 +24,12 @@ export const authRoutes = [
 ]
 export const publicRoutes = [
     {
-        path: SHOP_ROUTE,
-        Component: Main
+        path: ABOUT,
+        Component: About
     },
     {
-        path: PROFILES,
-        Component: Profiles
+        path: SHOP_ROUTE,
+        Component: Main
     },
     {
         path: LOGIN_ROUTE,

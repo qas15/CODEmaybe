@@ -1,0 +1,47 @@
+/* Основной стиль для контейнера */
+.container-fluid {
+    display: flex;
+    justify-content: center; /* Располагаем элементы в ряд */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    padding: 0;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+/* Блок с изображением профиля */
+.col-md-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Центральная часть с данными */
+.col-md-5 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Правая часть с дополнительной информацией */
+.col-md-4 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Если экран слишком маленький, элементы будут занимать 100% ширины */
+@media (max-width: 767px) {
+    .container-fluid {
+        flex-direction: column;
+    }
+
+    .col-md-3, .col-md-5, .col-md-4 {
+        flex-basis: 100%; /* Каждая колонка будет занимать всю ширину */
+        margin-bottom: 15px;
+    }
+}
+
+
+
