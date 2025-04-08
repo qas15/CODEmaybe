@@ -1,0 +1,124 @@
+@font-face {
+  font-family: "Hard";
+  src: local(HalvarBreitt2-XBd), url(./HalvarBreitt2-XBd.woff) format('woff');
+}
+@font-face {
+  font-family: "Mid";
+  src: local(t2-Rooftop-Medium), url(./t2-Rooftop-Medium.woff) format('woff');
+}
+@font-face {
+  font-family: "Light";
+  src: local(t2-Rooftop-Regular), url(./t2-Rooftop-Regular.woff) format('woff');
+}
+
+
+.reviews-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .reviews-title {
+    text-align: center;
+    font-family: "Hard";
+    color: #000000;
+  }
+  
+  .reviews-list {
+    margin: 30px 0;
+  }
+  
+  .review-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .review-author {
+    margin: 0 0 10px 0;
+    color: #000000;
+    font-family: "Mid";
+  }
+  
+  .review-rating {
+    color: #ffd700;
+    margin-bottom: 10px;
+  }
+  
+  .review-text {
+    margin: 0;
+    color: #000000;
+    font-family: 'Light';
+    line-height: 1.5;
+  }
+  
+  .reviews-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-color: #000000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .form-input {
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-color: #000000;
+    font-size: 16px;
+    font-family: "Mid";
+  }
+  
+  .form-textarea {
+    padding: 10px;
+    border: 1px solid #FFFFFF;
+    border-color: #000000;
+    height: 100px;
+    font-size: 16px;
+    font-family: "Mid";
+    resize: vertical;
+  }
+  
+  .rating-container {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .star-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ffd700;
+    padding: 0;
+  }
+  
+  .star-button:hover {
+    opacity: 0.8;
+  }
+  
+  .submit-button {
+    padding: 12px 20px;
+    background-color: #a7fc00;
+    color: black;
+    border: none;
+    border-radius: 128px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Mid";
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #0000ff;
+    color: white;
+  }
+  
+  .form-subtitle {
+    color: #000000;
+    font-family: "Mid";
+    margin: 30px 0 15px 0;
+  }
