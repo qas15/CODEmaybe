@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Reviews.css';
 import { getComments, NewComment } from '../http/userAPI';
 
+let done = false;
+
 const Reviews = () => {
   const [stars, setStars] = useState('');
   const [text, setText] = useState('');
@@ -12,18 +14,28 @@ const Reviews = () => {
   const [newText, setNewText] = useState('');
   const [newRating, setNewRating] = useState(0);
 
+  if (!done) {
+    done = true;
+    getComments().then((comments) => {
+      setReviews(comments);
+    });
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
       const result = await getComments();
       setReviews(result);
 
-    if (!newAuthor.trim() || !newRating === 0) {
+    if (!newText.trim() || !newRating === 0) {
       alert('Заполните все поля');
       return;
     }
 
-    await NewComment(stars, text);
+    console.log(stars);
+    console.log(text);
+
+    await NewComment(newRating, newText);
 
     const newReview = {
       id: Date.now(),
@@ -86,13 +98,6 @@ const Reviews = () => {
           onRatingChange={setNewRating}
         />
       <form onSubmit={handleSubmit} className="reviews-form">
-        <input
-          type="text"
-          placeholder="Ваше имя"
-          value={newAuthor}
-          onChange={(e) => setNewAuthor(e.target.value)}
-          className="form-input"
-        />
         <textarea
           placeholder="Текст отзыва"
           value={newText}

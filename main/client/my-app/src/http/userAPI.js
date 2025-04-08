@@ -1,4 +1,4 @@
-const SERVER_ADDR = "http://localhost:3001";
+const SERVER_ADDR = "http://localhost:5000";
 
 
 export class ErrorResponse {
@@ -115,10 +115,10 @@ export async function NewComment(stars, text) {
     });
     
     if (result["error"]) {
-        return new ErrorResponse(0);
+        return new ErrorResponse(result["error"], result["message"]);
     }
 
-    return new LoginResponse(0);
+    return new SuccessResponse();
 }
 
 export async function check() {

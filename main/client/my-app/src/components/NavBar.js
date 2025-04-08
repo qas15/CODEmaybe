@@ -69,23 +69,14 @@ const NavBar = () => {
                         </Button>
                     )}
 
-                    {user.isAuth ? (
-                        <Button
-                            variant="outline-light"
-                            onClick={logOut}
-                            className="ms-2"
-                        >
-                            Выйти
-                        </Button>
-                    ) : (
-                        <Button
-                            variant="outline-light"
-                            onClick={() => navigate('/reviews')}
-                            className="ms-2"
-                        >
-                            Отзывы
-                        </Button>
-                    )}
+
+                    <Button
+                        variant="outline-light"
+                        onClick={() => navigate('/reviews')}
+                        className="ms-2"
+                    >
+                        Отзывы
+                    </Button>
                 </Nav>
             </Container>
         </Navbar>
