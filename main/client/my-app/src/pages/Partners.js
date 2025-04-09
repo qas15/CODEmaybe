@@ -37,7 +37,7 @@ const FranchiseModal = ({ isOpen, onClose }) => {
                 <button className="modal-close-btn" onClick={onClose}>
                     <FaTimes />
                 </button>
-                <h3 className="modal-title">Франчайзинг от Tele2</h3>
+                <h5 className="modal-title">Франчайзинг от t2</h5>
                 <div className="modal-body">
                     <p className="modal-intro">
                         <strong>Tele2</strong> предлагает <span className="highlight">уникальные условия</span> для партнеров
