@@ -42,7 +42,7 @@ const ChatBot = () => {
                 response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer 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',
+                        'Authorization': 'Bearer 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',
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
@@ -66,7 +66,7 @@ const ChatBot = () => {
                 response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer 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',
+                        'Authorization': 'Bearer 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',
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({

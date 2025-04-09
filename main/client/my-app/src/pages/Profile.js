@@ -1,7 +1,8 @@
-import { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../AppContextProvider';
 import { ErrorResponse, getProfile, HandleSubmit } from '../http/userAPI';
 import "../styles/Profile.css";
+import logo from '../static/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg';
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
@@ -62,9 +63,9 @@ const Profile = () => {
                 {/* Левая часть с изображением профиля */}
                 <div className="col-md-3 d-flex flex-column align-items-center text-center p-3 py-5">
                     <img
+                        src={logo}
                         className="rounded-circle mt-5"
                         width="150px"
-                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
                         alt="User Avatar"
                     />
 
