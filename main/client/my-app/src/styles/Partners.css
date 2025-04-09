@@ -8,7 +8,7 @@
     --partners-electric-blue-dark: #0099CC;
     --partners-dark: #000000;
     --partners-light: #FFFFFF;
-    --partners-gray: #F5F5F5;
+    --partners-gray: #000;
     --partners-dark-gray: #333333;
 
     /* Остальные переменные */
@@ -99,6 +99,10 @@ section {
     align-items: center;
     font-family: Hard;
     margin-bottom: 40px;
+}
+
+.white {
+    color: #fff;
 }
 
 .section-icon {

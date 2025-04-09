@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState } from 'react';
 import { Context } from '../AppContextProvider'; // Импорт контекста
 import { useNavigate } from 'react-router-dom';
-import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'; // Добавим NavDropdown для выпадающих кнопок
+import { Button, Navbar, Container, Nav } from 'react-bootstrap'; // Добавим NavDropdown для выпадающих кнопок
 import '../styles/NavBar.css'
 import { logout } from '../http/userAPI';
 import logo from '../static/t2_Logo_MonoWhite_sRGB_Preview.jpg';

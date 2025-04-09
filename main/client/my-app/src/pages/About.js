@@ -1,13 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { FaMobileAlt, FaWifi, FaChartLine, FaUserFriends, FaGlobe, FaBolt } from 'react-icons/fa';
 import '../styles/AboutPage.css';
 import photo from "../static/t2_Logo_Black_sRGB_Preview.jpg";
 
 
 const AboutPage = () => {
-    const navigate = useNavigate();
-
     const services = [
         {
             icon: <FaMobileAlt className="service-icon" />,

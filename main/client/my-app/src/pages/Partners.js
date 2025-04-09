@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {
-    FaHandshake,
-    FaStore,
     FaUsers,
     FaChartLine,
     FaBuilding,
@@ -94,7 +92,7 @@ const Partners = () => {
                 <div className="container">
                     <div className="section-header" style={{alignSelf: "center", width: "100%", justifyContent: "center", "display": "flex"}}>
                         {/* <FaShoppingCart className="section-icon" /> */}
-                        <h2>ПОТЕНЦИАЛЬНЫМ ПОСТАВЩИКАМ</h2>
+                        <h2 className='white'>ПОТЕНЦИАЛЬНЫМ ПОСТАВЩИКАМ</h2>
                     </div>
                     <div className="content-grid">
                         <div className="content-card">
@@ -195,17 +193,17 @@ const Partners = () => {
                     </div>
                     <div className="opportunities-list">
                         <div className="opportunity-item">
-                            <div className="opp-icon"><FaFileAlt /></div>
+                            <div className="opp-icon"><FaFileAlt color='white' /></div>
                             <div className="opp-content">
-                                <h5>Электронный документооборот</h5>
-                                <p>Подключение к ЭДО для обмена бухгалтерскими документами между юридическими лицами.</p>
+                                <h5 className='white'>Электронный документооборот</h5>
+                                <p className='white'>Подключение к ЭДО для обмена бухгалтерскими документами между юридическими лицами.</p>
                             </div>
                         </div>
                         <div className="opportunity-item">
-                            <div className="opp-icon"><FaShoppingCart /></div>
+                            <div className="opp-icon"><FaShoppingCart color='white' /></div>
                             <div className="opp-content">
-                                <h5>Продажа непрофильных активов</h5>
-                                <p>ООО «Т2 Мобайл» осуществляет продажу непрофильных активов на выгодных условиях.</p>
+                                <h5 className='white'>Продажа непрофильных активов</h5>
+                                <p className='white'>ООО «Т2 Мобайл» осуществляет продажу непрофильных активов на выгодных условиях.</p>
                             </div>
                         </div>
                     </div>

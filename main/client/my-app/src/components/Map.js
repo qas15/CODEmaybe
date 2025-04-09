@@ -1,4 +1,4 @@
-import { Feature, Image, Map, Overlay, View } from 'ol';
+import { Feature, Map, Overlay, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj';
@@ -9,24 +9,26 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useRef, useState } from 'react';
 import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
-import Circle from 'ol/style/Circle';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { blue, green, red, yellow } from '@mui/material/colors';
 import Icon from 'ol/style/Icon';
-import MapMarker from "../assets/location.svg";
+
+
+import Kafedr from '../static/Kafedr.jpg';
+import KulibinsPark from "../static/KulibinsPark.jpg";
+import Kremlin from "../static/Nizegorodskiy_Kremlin.jpg";
+import Yarmorka from "../static/NizhegorodksayaYarmorka.jpg";
+
 
 let tooltipElement;
-let setModeElement;
 let mapInitialized = false;
 let map;
 let featureOverlay;
 let currentFeatureOverlay;
 let historicOverlay;
 let tooltipOverlay;
-let setModeOverlay;
 let glayers;
 
 function initmap() {
@@ -256,24 +258,32 @@ const historic_features = [
         latitude: 56.333621,
         longitude: 43.971271,
         title: "Кафедральный собор во имя Святого Благоверного Князя Александра Невского",
+        src: Kafedr,
+        desc: "Этот величественный храм, построенный в 1881 году, является одним из самых высоких православных соборов России (87 метров). Его архитектура сочетает византийский и русский стили. Расположенный на Стрелке Волги и Оки, собор украшен золотыми куполами и богатыми мозаиками. Здесь хранится частица мощей Александра Невского. Особенно впечатляет внутреннее убранство с росписями и резным иконостасом.",
         text: [`С 2015 года качество связи здесь возросло на`, <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>20%</span>]
     },
     {
         latitude: 56.328299,
         longitude: 43.961199,
         title: "Нижегородская ярмарка",
+        src: Yarmorka,
+        desc: "Исторический торговый комплекс, построенный в 1817 году, был крупнейшей ярмаркой Российской империи. Главный дом в стиле классицизма с ротондой - архитектурная доминанта. Сегодня здесь проводят международные выставки, форумы и культурные мероприятия. Сохранились старинные павильоны и Спасский собор. Ярмарка - символ купеческого духа и экономического расцвета Нижнего Новгорода.",
         text: [`За 4 года подняли качество связи в этом месте на`, <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>60%</span>]
     },
     {
         latitude: 56.328437, 
         longitude: 44.003111,
         title: "Нижегородский кремль",
+        src: Kremlin,
+        desc: "Крепость XVI века с 13 башнями и километровой стеной - сердце города. Здесь находилось древнее городище, сейчас - административные здания и музеи. Дмитриевская башня - главный вход с часами. Со стен открывается лучший вид на Стрелку. В кремле стоит памятник Минину и Пожарскому (копия московского). Особенно красива подсветка вечером.",
         text: [`Поднялись с 2G до 4G в этом месте за`,  <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>3 года</span>]
     },
     {
         latitude: 56.31544267789599,
         longitude: 44.009416868864875,
         title: "Парк имени Кулибина",
+        src: KulibinsPark,
+        desc: "Парк в центральной части Нижнего Новгорода. Создан на территории бывшего Петропавловского кладбища в 1940 году. Назван в честь российского механика-самоучки Ивана Петровича Кулибина, родившегося в Подновье и похороненного на Петропавловском кладбище в 1818 году",
         text: [`Качество связи здесь на`, <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>10%</span>, `лучше, чем у других операторов`]
     }
 ];
@@ -282,12 +292,17 @@ const historic_features = [
 const MapDescriptionArgs = ({mapInfo}) => {
     [mapInfo, setMapInfo] = useState(null);
 
-    return (<Col style={{display: 'flex', flexDirection: "column", justifyContent: "center"}}>
+    return (<Col style={{display: 'flex', flexDirection: "column", justifyContent: "start"}}>
         {
             mapInfo ? (<div>
                 <h3 style={{padding: 0, margin: 0, color: "#fff"}}>Вы рядом с:</h3>
                 <h1 style={{padding: 0, margin: 0, marginTop: "6px", marginBottom: "10px", color: "#FF3495"}}>{mapInfo.title}</h1>
                 <p style={{padding: 0, margin: 0, color: "#fff"}}>{mapInfo.text}</p>
+                <br/>
+                <img src={mapInfo.src} alt="" style={{maxWidth: "70%"}} />
+                <br/>
+                <br/>
+                <p style={{padding: 0, margin: 0, color: "#aaa", maxWidth: "70%"}}>{mapInfo.desc}</p>
             </div>) : (<div>
                 <h1 style={{padding: 0, margin: 0, marginTop: "6px", marginBottom: "10px", color: "#FF3495", width: "50%"}}>Подойдите к одной из голубых точек</h1>
                 <p style={{padding: 0, margin: 0, color: "#fff"}}>Мы расскажем вам, как менялась связь T2 в этом месте</p>
@@ -320,7 +335,6 @@ let mapInfo, setMapInfo;
 function OpenLayersMap() {
     const [initialized, setInitialized] = useState(false);
     tooltipElement = useRef();
-    setModeElement = useRef();
 
     if (!initialized) {
         setTimeout(initmap, 70);

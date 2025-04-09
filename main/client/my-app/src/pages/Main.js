@@ -1,7 +1,6 @@
 import React from 'react';
 import {observer} from "mobx-react-lite";
 import OpenLayersMap from '../components/Map';
-import { Button, Row } from 'react-bootstrap'; // Добавим NavDropdown для выпадающих кнопок
 import { useNavigate } from 'react-router-dom';
 import '../styles/NavBar.css';
 

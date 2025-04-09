@@ -1,8 +1,7 @@
 import React from 'react';
 import { FaDatabase, FaPhoneAlt, FaWifi, FaInfinity, FaCalendarCheck,
-    FaTrain, FaGlobeEurope, FaShieldAlt, FaLock, FaHandHoldingUsd,
-    FaSlidersH, FaGift, FaShareAlt, FaExchangeAlt, FaStore,
-    FaSnowflake, FaFire, FaBolt, FaLeaf, FaTachometerAlt } from 'react-icons/fa';
+    FaGlobeEurope, FaShieldAlt, FaExchangeAlt,
+    FaSnowflake, FaBolt, FaLeaf, FaTachometerAlt } from 'react-icons/fa';
 import '../styles/Tariff.css';
 
 const Tariff = () => {
