@@ -1,4 +1,4 @@
-import { Feature, Map, View } from 'ol';
+import { Feature, Map, Overlay, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj';
@@ -7,43 +7,67 @@ import VectorSource from 'ol/source/Vector';
 import { Point } from 'ol/geom';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Circle from 'ol/style/Circle';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import { blue, cyan, green, red, yellow } from '@mui/material/colors';
 
+let tooltipElement;
+let setModeElement;
 let mapInitialized = false;
 let map;
 let featureOverlay;
 let currentFeatureOverlay;
 let historicOverlay;
+let tooltipOverlay;
+let setModeOverlay;
+let glayers;
 
 function initmap() {
     if (mapInitialized) return;
 
     mapInitialized = true;
 
+    glayers = [
+        new TileLayer({
+            source: new OSM({
+                attributions: "",
+                url: "http://localhost:5000/maps?g=1&z={z}&x={x}&y={y}"
+            })
+        }),
+        new TileLayer({
+            source: new OSM({
+                attributions: "",
+                url: "http://localhost:5000/maps?g=2&z={z}&x={x}&y={y}"
+            })
+        }),
+        new TileLayer({
+            source: new OSM({
+                attributions: "",
+                url: "http://localhost:5000/maps?g=3&z={z}&x={x}&y={y}"
+            })
+        }),
+        new TileLayer({
+            source: new OSM({
+                attributions: "",
+                url: "http://localhost:5000/maps?g=4&z={z}&x={x}&y={y}"
+            })
+        }),
+    ]
+
     map = new Map({
         target: 'map',
         layers: [
             new TileLayer({
-                source: new OSM(),
-            }),
-            new TileLayer({
                 source: new OSM({
-                    url: "http://localhost:5000/maps?g=3&z={z}&x={x}&y={y}"
-                })
+                    attributions: ""
+                }),
             }),
-            new TileLayer({
-                source: new OSM({
-                    url: "http://localhost:5000/maps?g=2&z={z}&x={x}&y={y}"
-                })
-            }),
-            new TileLayer({
-                source: new OSM({
-                    url: "http://localhost:5000/maps?g=1&z={z}&x={x}&y={y}"
-                })
-            })
+            ...glayers,
         ],
         
         view: new View({
@@ -59,7 +83,7 @@ function initmap() {
         map: map,
         style: new Style({
             image: new Circle({
-                radius: 7,
+                radius: 15,
                 fill: new Fill({color: '#f00'})
             }),
         }),
@@ -70,7 +94,7 @@ function initmap() {
         map: map,
         style: new Style({
             image: new Circle({
-                radius: 7,
+                radius: 15,
                 fill: new Fill({color: '#f0f'})
             }),
         }),
@@ -81,25 +105,74 @@ function initmap() {
         map: map,
         style: new Style({
             image: new Circle({
-                radius: 7,
-                fill: new Fill({color: '#ff0'})
+                radius: 15,
+                fill: new Fill({color: '#0ff'})
             }),
         }),
     });
 
     for (var feature of features) {
-        const f = new Feature(
-            new Point(fromLonLat([feature.longitude, feature.latitude]), )
-        );
+        const f = new Feature({
+            geometry: new Point(fromLonLat([feature.longitude, feature.latitude])),
+            title: "Вышка T2",
+        });
         featureOverlay.getSource().addFeature(f);
     }
 
     for (var feature of historic_features) {
         const f = new Feature(
-            new Point(fromLonLat([feature.longitude, feature.latitude]), )
+            {
+                geometry: new Point(fromLonLat([feature.longitude, feature.latitude])),
+                ...feature,
+            }
         );
         historicOverlay.getSource().addFeature(f);
     }
+
+    tooltipOverlay = new Overlay({
+        element: tooltipElement.current,
+        offset: [10, 0],
+        positioning: 'center-left'
+    });
+    map.addOverlay(tooltipOverlay);
+
+    // setModeOverlay = new Overlay({
+    //     element: setModeElement.current,
+    //     positioning: 'top-left',
+    // });
+    // map.addOverlay(setModeOverlay);
+
+    let hoveredFeature = null;
+    map.on('pointermove', (e) => {
+        const feature = map.forEachFeatureAtPixel(e.pixel, (f) => f);
+
+        if (feature !== hoveredFeature) {
+            tooltipOverlay.setPosition(undefined);
+            tooltipElement.current.style.display = 'none';
+        }
+
+        if (feature) {
+            const geomerty = feature.get("geometry");
+            const coord = geomerty.getCoordinates();
+            tooltipOverlay.setPosition(coord);
+
+            const props = feature.getProperties();
+            tooltipElement.current.innerHTML = `<div style="">${props.title}</div>`
+
+            tooltipElement.current.style.display = 'block';
+        }
+
+        hoveredFeature = feature;
+    });
+
+    map.on('pointermove', function(e) {
+        const pixel = map.getEventPixel(e.originalEvent);
+        const hit = map.hasFeatureAtPixel(pixel);
+        
+        try {
+            map.getTarget().style.cursor = hit ? 'pointer' : '';
+        } catch (e) {}
+    });
     
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -113,14 +186,17 @@ function initmap() {
             },
             function(error) {
                 console.error('Ошибка геолокации:', error.message);
-                // Можно добавить fallback-логику (например, запрос города или IP-геолокацию)
             }
         );
 
         navigator.geolocation.watchPosition(function (pos) {
             const f = new Feature(
-                new Point(fromLonLat([pos.coords.longitude, pos.coords.latitude]), )
+                {
+                    geometry: new Point(fromLonLat([pos.coords.longitude, pos.coords.latitude])),
+                    title: "Вы - тут",
+                }
             );
+                
             currentFeatureOverlay.getSource().clear();
             currentFeatureOverlay.getSource().addFeature(f);
 
@@ -139,8 +215,6 @@ function initmap() {
 
                 const dist = Math.sqrt(Math.pow(f_lat - c_lat, 2) + Math.pow(f_lon - c_lon, 2));
 
-
-                console.log(dist);
                 if (dist < 5200 && dist < min) {
                     min = dist;
                     minValue = feature;
@@ -177,25 +251,25 @@ const historic_features = [
         latitude: 56.333621,
         longitude: 43.971271,
         title: "Кафедральный собор во имя Святого Благоверного Князя Александра Невского",
-        text: "С 2015 года качество связи здесь возросло на 150%"
+        text: [`С 2015 года качество связи здесь возросло на`, <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>20%</span>]
     },
     {
         latitude: 56.328299,
         longitude: 43.961199,
         title: "Нижегородская ярмарка",
-        text: "За 4 года пондняли качество связи в этом месте на 60%"
+        text: [`За 4 года пондняли качество связи в этом месте на`, <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>60%</span>]
     },
     {
         latitude: 56.328437, 
         longitude: 44.003111,
         title: "Нижегородский кремль",
-        text: "Поднялись с 2G до 4G в этом месте за 3 года"
+        text: [`Поднялись с 2G до 4G в этом месте за`,  <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>3 года</span>]
     },
     {
         latitude: 56.31544267789599,
         longitude: 44.009416868864875,
         title: "Парк имени Кулибина",
-        text: "Качество связи здесь на 10% лучше, чем у других операторов"
+        text: [`Качество связи здесь на`, <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>10%</span>, `лучше, чем у других операторов`]
     }
 ];
 
@@ -203,44 +277,45 @@ const historic_features = [
 const MapDescriptionArgs = ({mapInfo}) => {
     [mapInfo, setMapInfo] = useState(null);
 
-    const tst = {width: "15px", height: "15px", padding: 0, margin: 0, borderRadius: "10px", boxShadow: "0 0 2px black"}
-    const dv = {display: "flex", alignItems: "center", gap: "5px"};
-
-
-    return (
-        <Col style={{width: "100%", marginTop: "50px"}}>
-            {mapInfo ? (<div>
-                <h1>{mapInfo.title}</h1>
-                <p>{mapInfo.text}</p>
-            </div>) : null}
-
-            <hr/>
-
-            <div style={dv}>
-                <div style={{...tst, background: "#f00"}}></div>
-                - вышки T2
-            </div>
-
-            <hr/>
-
-            <div style={dv}>
-                <div style={{...tst, background: "#f0f"}}></div>
-                - Вы тут
-            </div>
-            
-            <hr/>
-
-            <div style={dv}>
-                <div style={{...tst, background: "#ff0"}}></div>
-                - исторические точки
-            </div>
+    return (<Col style={{display: 'flex', flexDirection: "column", justifyContent: "center"}}>
+        {
+            mapInfo ? (<div>
+                <h3 style={{padding: 0, margin: 0, color: "#fff"}}>Вы рядом с:</h3>
+                <h1 style={{padding: 0, margin: 0, marginTop: "6px", marginBottom: "10px", color: "#FF3495"}}>{mapInfo.title}</h1>
+                <p style={{padding: 0, margin: 0, color: "#fff"}}>{mapInfo.text}</p>
+            </div>) : (<div>
+                <h1 style={{padding: 0, margin: 0, marginTop: "6px", marginBottom: "10px", color: "#FF3495", width: "50%"}}>Подойдите к одной из голубых точек</h1>
+                <p style={{padding: 0, margin: 0, color: "#fff"}}>Мы расскажем вам, как менялась связь T2 в этом месте</p>
+            </div>)
+        }
         </Col>
     );
 }
 
+const updateMapLayers = () => {
+    glayers[0].setVisible(checked1G);
+    glayers[1].setVisible(checked2G);
+    glayers[2].setVisible(checked3G);
+    glayers[3].setVisible(checked4G);
+
+    console.log("Updated visibility")
+    console.log({
+        checked1G,
+        checked2G,
+        checked3G,
+        checked4G
+    })
+}
+
+let checked1G = true, setChecked1G = function (val) {checked1G = val.target.checked; updateMapLayers()};
+let checked2G = true, setChecked2G = function (val) {checked2G = val.target.checked; updateMapLayers()};
+let checked3G = true, setChecked3G = function (val) {checked3G = val.target.checked; updateMapLayers()};
+let checked4G = true, setChecked4G = function (val) {checked4G = val.target.checked; updateMapLayers()};
 let mapInfo, setMapInfo;
 function OpenLayersMap() {
     const [initialized, setInitialized] = useState(false);
+    tooltipElement = useRef();
+    setModeElement = useRef();
 
     if (!initialized) {
         setTimeout(initmap, 70);
@@ -248,9 +323,63 @@ function OpenLayersMap() {
     }
 
     return (
-        <Row style={{boxShadow: "0 1px 10px gray"}}>
+        <Row style={{ background: "black" }}>
             <div id="map" style={{ width: '50vw', height: '80vh' }}/>
-            <MapDescriptionArgs mapInfo={mapInfo} />
+            <div ref={tooltipElement} style={{
+                position: 'absolute',
+                backgroundColor: 'white',
+                padding: '5px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                display: 'none',
+                width: "max-content",
+                maxWidth: "200px",
+            }}></div>
+            <div style={{
+                zIndex: 200,
+                position: 'absolute',
+                backgroundColor: 'white',
+                padding: '5px',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                fontSize: '12px',
+                display: 'block',
+                width: "150px",
+                height: "auto",
+                left: "10px",
+                marginTop: "10px",
+            }}>
+                <p>Режим отображения:</p>
+                
+                <FormGroup>
+                    <FormControlLabel onChange={setChecked1G} control={<Checkbox defaultChecked size='small' sx={{
+                        color: red[800],
+                        '&.Mui-checked': {
+                            color: red[600],
+                        }
+                    }}/>} label="1G"/>
+                    <FormControlLabel onChange={setChecked2G} control={<Checkbox defaultChecked size='small' sx={{
+                        color: green[800],
+                        '&.Mui-checked': {
+                            color: green[600],
+                        }
+                    }}/>} label="2G"/>
+                    <FormControlLabel onChange={setChecked3G} control={<Checkbox defaultChecked size='small' sx={{
+                        color: blue[800],
+                        '&.Mui-checked': {
+                            color: blue[600],
+                        }
+                    }}/>} label="3G"/>
+                    <FormControlLabel onChange={setChecked4G} control={<Checkbox defaultChecked size='small' sx={{
+                        color: yellow[800],
+                        '&.Mui-checked': {
+                            color: yellow[600],
+                        }
+                    }}/>} label="4G"/>
+                </FormGroup>
+            </div>
+
+            <MapDescriptionArgs mapInfo={mapInfo}/>
         </Row>
     );
 }

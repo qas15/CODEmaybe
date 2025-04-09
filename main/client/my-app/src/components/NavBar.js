@@ -5,8 +5,7 @@ import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'; /
 import '../styles/NavBar.css'
 import { logout } from '../http/userAPI';
 import logo from '../static/t2_Logo_MonoWhite_sRGB_Preview.jpg';
-// import {px} from "framer-motion";
-// import {menu} from "framer-motion/m";
+
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста
     const navigate = useNavigate();
@@ -53,22 +52,21 @@ const NavBar = () => {
                     style={{ color: 'white', fontWeight: 'bold' }}
                 >
                     <img src={logo} alt="Logo" style={{ height: '100px' }}/>
-                    {/* Логотип */}
                 </Nav.Link>
                 <Nav className="ml-auto" style={{ color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <header className="header">
-                        <button className="menu-button" onClick={() => setOpen(!isOpen)}>Menu
+                        <button className="menu-button" onClick={() => setOpen(!isOpen)}>Меню
                         </button>
                         <nav className={`menu ${isOpen ? "active" : ""}`} ref={menuRef}>
                             <ul className="menu__list">
                                 <li className="menu__item">
-                                    <span onClick={() => navigate('/about')}>About</span>
+                                    <span onClick={() => navigate('/about')}>О нас</span>
                                 </li>
                                 <li className="menu__item">
-                                    <span onClick={() => navigate('/tariffs')}>Tariffs</span>
+                                    <span onClick={() => navigate('/tariffs')}>Тарифы</span>
                                 </li>
                                 <li className="menu__item">
-                                    <span onClick={() => navigate('/partners')}>Partners</span>
+                                    <span onClick={() => navigate('/partners')}>Партнеры</span>
                                 </li>
                                 <li className="menu__item">
                                     <span onClick={() => navigate('/reviews')}>Отзывы</span>
@@ -103,7 +101,6 @@ const NavBar = () => {
                             Авторизация
                         </Button>
                     )}
-
                 </Nav>
             </Container>
         </Navbar>
