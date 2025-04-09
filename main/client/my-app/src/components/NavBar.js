@@ -5,8 +5,8 @@ import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'; /
 import '../styles/NavBar.css'
 import { logout } from '../http/userAPI';
 import logo from '../static/t2_Logo_MonoWhite_sRGB_Preview.jpg';
-import {px} from "framer-motion";
-import {menu} from "framer-motion/m";
+// import {px} from "framer-motion";
+// import {menu} from "framer-motion/m";
 const NavBar = () => {
     const { user, setUser, setIsAuth } = useContext(Context); // Получаем user и setUser из контекста
     const navigate = useNavigate();
@@ -85,7 +85,7 @@ const NavBar = () => {
                             Профиль
                         </Button>
                     )}
-
+                    
                     {user.isAuth ? (
                         <Button
                             variant="outline-light"
