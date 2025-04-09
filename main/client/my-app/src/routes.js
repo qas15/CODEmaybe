@@ -4,15 +4,21 @@ import {
     SHOP_ROUTE,
     PROFILE,
     MAP_ROUTE,
-    ABOUT
+    ABOUT,
+    TARIFFS,
+    REVIEWS, 
+    PARTNERS,
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
 import Reg from './pages/Register'
 import Profile from './pages/Profile';
+import Tariffs from './pages/Plans'
+import Reviews from "./pages/Reviews";
 import Main from './pages/Main'
 import OpenLayersMap from "./components/Map";
 import About from "./pages/About";
+import Partners from "./pages/Partners";
 
 export const authRoutes = [
     {
@@ -21,6 +27,14 @@ export const authRoutes = [
     }
 ]
 export const publicRoutes = [
+    {
+        path: TARIFFS,
+        Component: Tariffs
+    },
+    {
+        path: PARTNERS,
+        Component: Partners
+    },
     {
         path: ABOUT,
         Component: About
@@ -40,5 +54,9 @@ export const publicRoutes = [
     {
         path: MAP_ROUTE,
         Component: OpenLayersMap
-    }
+    },
+    {
+        path: REVIEWS,
+        Component: Reviews
+    },
 ]

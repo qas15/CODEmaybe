@@ -6,6 +6,9 @@ import { Context } from './AppContextProvider';  // Импортируем Conte
 import { check } from './http/userAPI';
 import { Spinner } from 'react-bootstrap';
 import AppRouter from "./components/AppRouter";
+import "./pages/HalvarBreitt2-XBd.woff"
+import './pages/t2-Rooftop-Medium.woff'
+import './pages/t2-Rooftop-Regular.woff'
 
 const App = observer(() => {
     const { user, setUser } = useContext(Context); // Получаем user и setUser из контекста
