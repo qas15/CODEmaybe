@@ -49,8 +49,7 @@
     background-color: var(--partners-light);
     padding: 30px;
     border-radius: 10px;
-    max-width: 600px;
-    width: 90%;
+    width: 120% !important;
     position: relative;
     box-shadow: var(--partners-shadow);
 }
@@ -109,7 +108,7 @@ section {
 }
 .modal-body p {
     font-size: 1.05rem;
-    line-height: 1,7;
+    line-height: 1.4;
     margin-bottom: 1.2rem;
     color: var(--partners-dark-gray);
     font-weight: 600;
@@ -426,7 +425,7 @@ h5 {
     background-color: var(--partners-light);
     padding: 0;
     border-radius: 12px;
-    max-width: 600px;
+    max-width: 750px;
     width: 90%;
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -442,7 +441,7 @@ h5 {
 }
 
 .modal-title {
-    color: white;
+    color: #000000;
     padding: 20px;
     margin: 0;
     font-size: 1.5rem;
