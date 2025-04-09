@@ -1,0 +1,8 @@
+@font-face {
+    font-family: HalvarBreitt2;
+    src: url("./fonts/HalvarBreitt.woff");
+}
+
+body {
+    font-family: HalvarBreitt2;
+}

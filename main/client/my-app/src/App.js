@@ -10,6 +10,7 @@ import "./pages/HalvarBreitt2-XBd.woff"
 import './pages/t2-Rooftop-Medium.woff'
 import './pages/t2-Rooftop-Regular.woff'
 import ChatBot from "./components/ChatBot";
+import { RunningString } from './components/RunningString';
 
 const App = observer(() => {
     const { user, setUser } = useContext(Context); // Получаем user и setUser из контекста
@@ -50,6 +51,7 @@ const App = observer(() => {
     return (
         <BrowserRouter>
             <NavBar />
+            <RunningString text="Tele2 — быстрый, выгодный и надежный мобильный оператор!" />
             <AppRouter />
             <ChatBot />
         </BrowserRouter>
