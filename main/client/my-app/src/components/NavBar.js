@@ -51,7 +51,7 @@ const NavBar = () => {
                     onClick={handleRedirect}
                     style={{ color: 'white', fontWeight: 'bold' }}
                 >
-                    <img src={logo} alt="Logo" style={{ height: '100px' }}/>
+                    <img src={logo} alt="Logo" style={{ width: "120px" }}/>
                 </Nav.Link>
                 <Nav className="ml-auto" style={{ color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <header className="header">

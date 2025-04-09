@@ -240,8 +240,7 @@ p {
     padding: 5rem 0;
     text-align: center;
     font-family: Hard;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: var(--light);
+    background-color: #000;
 }
 
 .cta-section h2 {

@@ -1,4 +1,4 @@
-import { Feature, Map, Overlay, View } from 'ol';
+import { Feature, Image, Map, Overlay, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj';
@@ -14,7 +14,9 @@ import Circle from 'ol/style/Circle';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { blue, cyan, green, red, yellow } from '@mui/material/colors';
+import { blue, green, red, yellow } from '@mui/material/colors';
+import Icon from 'ol/style/Icon';
+import MapMarker from "../assets/location.svg";
 
 let tooltipElement;
 let setModeElement;
@@ -82,10 +84,11 @@ function initmap() {
         source: new VectorSource(),
         map: map,
         style: new Style({
-            image: new Circle({
-                radius: 15,
-                fill: new Fill({color: '#f00'})
-            }),
+            image: new Icon({
+                opacity: 1,
+                src: `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red"><path d="M12 2a7.008 7.008 0 0 0-7 7c0 5.353 6.036 11.45 6.293 11.707l.707.707.707-.707C12.964 20.45 19 14.353 19 9a7.008 7.008 0 0 0-7-7zm0 16.533C10.471 16.825 7 12.553 7 9a5 5 0 0 1 10 0c0 3.546-3.473 7.823-5 9.533z"/><path d="M12 6a3 3 0 1 0 3 3 3 3 0 0 0-3-3zm0 4a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"/></svg>`,
+                scale: 1,
+            })
         }),
     });
 
@@ -93,10 +96,11 @@ function initmap() {
         source: new VectorSource(),
         map: map,
         style: new Style({
-            image: new Circle({
-                radius: 15,
-                fill: new Fill({color: '#f0f'})
-            }),
+            image: new Icon({
+                opacity: 1,
+                src: `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="purple"><path d="M12 2a7.008 7.008 0 0 0-7 7c0 5.353 6.036 11.45 6.293 11.707l.707.707.707-.707C12.964 20.45 19 14.353 19 9a7.008 7.008 0 0 0-7-7zm0 16.533C10.471 16.825 7 12.553 7 9a5 5 0 0 1 10 0c0 3.546-3.473 7.823-5 9.533z"/><path d="M12 6a3 3 0 1 0 3 3 3 3 0 0 0-3-3zm0 4a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"/></svg>`,
+                scale: 1,
+            })
         }),
     });
 
@@ -104,10 +108,11 @@ function initmap() {
         source: new VectorSource(),
         map: map,
         style: new Style({
-            image: new Circle({
-                radius: 15,
-                fill: new Fill({color: '#0ff'})
-            }),
+            image: new Icon({
+                opacity: 1,
+                src: `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="cyan"><path d="M12 2a7.008 7.008 0 0 0-7 7c0 5.353 6.036 11.45 6.293 11.707l.707.707.707-.707C12.964 20.45 19 14.353 19 9a7.008 7.008 0 0 0-7-7zm0 16.533C10.471 16.825 7 12.553 7 9a5 5 0 0 1 10 0c0 3.546-3.473 7.823-5 9.533z"/><path d="M12 6a3 3 0 1 0 3 3 3 3 0 0 0-3-3zm0 4a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"/></svg>`,
+                scale: 1,
+            })
         }),
     });
 
@@ -119,7 +124,7 @@ function initmap() {
         featureOverlay.getSource().addFeature(f);
     }
 
-    for (var feature of historic_features) {
+    for (let feature of historic_features) {
         const f = new Feature(
             {
                 geometry: new Point(fromLonLat([feature.longitude, feature.latitude])),
@@ -257,7 +262,7 @@ const historic_features = [
         latitude: 56.328299,
         longitude: 43.961199,
         title: "Нижегородская ярмарка",
-        text: [`За 4 года пондняли качество связи в этом месте на`, <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>60%</span>]
+        text: [`За 4 года подняли качество связи в этом месте на`, <span style={{color: "#00BFFF", fontWeight: "bold", margin: "5px"}}>60%</span>]
     },
     {
         latitude: 56.328437, 
@@ -324,7 +329,7 @@ function OpenLayersMap() {
 
     return (
         <Row style={{ background: "black" }}>
-            <div id="map" style={{ width: '50vw', height: '80vh' }}/>
+            <div id="map" style={{ width: '60vw', height: '80vh' }}/>
             <div ref={tooltipElement} style={{
                 position: 'absolute',
                 backgroundColor: 'white',
