@@ -6,7 +6,7 @@ import {
     FaGlobe,
     FaFileAlt,
     FaShoppingCart,
-    FaTimes, FaCheck, FaRubleSign
+    FaTimes, FaCheck, FaRubleSign, FaStore, FaHandshake
 } from 'react-icons/fa';
 import '../styles/Partners.css';
 
@@ -137,7 +137,7 @@ const Partners = () => {
                     <div className="container">
                         <div className="section-header">
                             <FaShoppingCart className="section-icon" />
-                            <h2>ПОТЕНЦИАЛЬНЫМ ПОСТАВЩИКАМ</h2>
+                            <h2 className='white'>ПОТЕНЦИАЛЬНЫМ ПОСТАВЩИКАМ</h2>
                         </div>
                         <div className="content-grid">
                             <div className="content-card">
@@ -174,7 +174,7 @@ const Partners = () => {
                         </div>
                         <div className="two-columns">
                             <div className="left-col">
-                                <h3>Преимущества</h3>
+                                <h3 style={{color: "black"}}>Преимущества</h3>
                                 <p>Розничная сеть Tele2 развивается по принципу франчайзинга и насчитывает более 3000 точек по всей России.</p>
                                 <p>Мы предлагаем готовое бизнес-решение "под ключ" - от стратегии до оформления салона.</p>
                                 <button
@@ -249,17 +249,17 @@ const Partners = () => {
                         </div>
                         <div className="opportunities-list">
                             <div className="opportunity-item">
-                                <div className="opp-icon"><FaFileAlt /></div>
+                                <div className="opp-icon"><FaFileAlt color="white"/></div>
                                 <div className="opp-content">
-                                    <h5>Электронный документооборот</h5>
-                                    <p>Подключение к ЭДО для обмена бухгалтерскими документами между юридическими лицами.</p>
+                                    <h5 className="white">Электронный документооборот</h5>
+                                    <p className="white">Подключение к ЭДО для обмена бухгалтерскими документами между юридическими лицами.</p>
                                 </div>
                             </div>
                             <div className="opportunity-item">
-                                <div className="opp-icon"><FaShoppingCart /></div>
+                                <div className="opp-icon"><FaShoppingCart color="white" /></div>
                                 <div className="opp-content">
-                                    <h5>Продажа непрофильных активов</h5>
-                                    <p>ООО «Т2 Мобайл» осуществляет продажу непрофильных активов на выгодных условиях.</p>
+                                    <h5 className="white">Продажа непрофильных активов</h5>
+                                    <p className="white">ООО «Т2 Мобайл» осуществляет продажу непрофильных активов на выгодных условиях.</p>
                                 </div>
                             </div>
                         </div>

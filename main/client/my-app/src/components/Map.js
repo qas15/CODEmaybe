@@ -14,7 +14,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { blue, green, red, yellow } from '@mui/material/colors';
 import Icon from 'ol/style/Icon';
-
+import "../styles/Map.css"
 
 import Kafedr from '../static/Kafedr.jpg';
 import KulibinsPark from "../static/KulibinsPark.jpg";
@@ -299,7 +299,7 @@ const MapDescriptionArgs = ({mapInfo}) => {
                 <h1 style={{padding: 0, margin: 0, marginTop: "6px", marginBottom: "10px", color: "#FF3495"}}>{mapInfo.title}</h1>
                 <p style={{padding: 0, margin: 0, color: "#fff"}}>{mapInfo.text}</p>
                 <br/>
-                <img src={mapInfo.src} alt="" style={{maxWidth: "70%"}} />
+                <img src={mapInfo.src} alt="" style={{maxWidth: "70%"}} className="img1" />
                 <br/>
                 <br/>
                 <p style={{padding: 0, margin: 0, color: "#aaa", maxWidth: "70%"}}>{mapInfo.desc}</p>
@@ -333,6 +333,7 @@ let checked3G = true, setChecked3G = function (val) {checked3G = val.target.chec
 let checked4G = true, setChecked4G = function (val) {checked4G = val.target.checked; updateMapLayers()};
 let mapInfo, setMapInfo;
 function OpenLayersMap() {
+
     const [initialized, setInitialized] = useState(false);
     tooltipElement = useRef();
 
@@ -369,7 +370,7 @@ function OpenLayersMap() {
                 marginTop: "10px",
             }}>
                 <p>Режим отображения:</p>
-                
+
                 <FormGroup>
                     <FormControlLabel onChange={setChecked1G} control={<Checkbox defaultChecked size='small' sx={{
                         color: red[800],

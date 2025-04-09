@@ -1,0 +1,72 @@
+/* Основные цвета палитры */
+:root {
+    --electric-blue: #7DF9FF;
+    --hot-pink: #FF3495;
+    --pure-white: #FFFFFF;
+    --light-gray: #CCCCCC;
+    --dark-gray: #333333;
+}
+
+/* Стили для контейнера */
+.Col {
+    background-color: var(--dark-gray);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+/* Заголовки */
+h1, h3 {
+    font-family: 'Arial', sans-serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: var(--hot-pink);
+    font-size: 2rem;
+}
+
+h3 {
+    color: var(--electric-blue);
+    font-size: 1.5rem;
+}
+
+/* Текст */
+p {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+    color: var(--pure-white);
+}
+
+/* Изображение */
+.img1 {
+    border-radius: 8px;
+    border: 2px solid var(--electric-blue);
+    box-shadow: 0 4px 8px rgba(125, 249, 255, 0.3);
+}
+
+/* Второстепенный текст */
+.secondary-text {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .Col {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
