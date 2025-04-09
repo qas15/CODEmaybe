@@ -41,7 +41,7 @@ const Reviews = () => {
       id: Date.now(),
       author: newAuthor,
       text: newText,
-      rating: newRating,
+      stars: newRating,
     };
 
     setReviews([...reviews, newReview]);
@@ -74,7 +74,7 @@ const Reviews = () => {
         <h4 className="review-author">{review.author}</h4>
         <div className="review-rating">
           {Array.from({ length: 5 }, (_, i) => (
-            <span key={i}>{i < review.rating ? '★' : '☆'}</span>
+            <span key={i}>{i < review.stars ? '★' : '☆'}</span>
           ))}
         </div>
         <p className="review-text">{review.text}</p>

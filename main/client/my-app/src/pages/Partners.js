@@ -49,10 +49,8 @@ const FranchiseModal = ({ isOpen, onClose }) => {
                                 <FaCheck />
                             </div>
                             <h4>Выгода</h4>
-                            <ul>
-                                <li>Обучение персонала</li>
-                                <li>поддержка</li>
-                            </ul>
+                            <p>Обучение персонала</p>
+                            <p>поддержка</p>
                         </div>
 
                         <div className="benefit-card">

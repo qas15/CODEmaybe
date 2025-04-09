@@ -55,8 +55,8 @@ const NavBar = () => {
                 </Nav.Link>
                 <Nav className="ml-auto" style={{ color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <header className="header">
-                        <button className="menu-button" onClick={() => setOpen(!isOpen)}>Меню
-                        </button>
+                        <Button className="menu-button" onClick={() => setOpen(!isOpen)}>Меню
+                        </Button>
                         <nav className={`menu ${isOpen ? "active" : ""}`} ref={menuRef}>
                             <ul className="menu__list">
                                 <li className="menu__item">
