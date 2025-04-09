@@ -62,6 +62,7 @@
     background: none;
     border: none;
     font-size: 1.2rem;
+    font-family: Hard;
     cursor: pointer;
     color: var(--partners-dark-gray);
 }
@@ -97,6 +98,7 @@ section {
 .section-header {
     display: flex;
     align-items: center;
+    font-family: Hard;
     margin-bottom: 40px;
 }
 
@@ -171,11 +173,12 @@ section {
 }
 
 
-h1, h2, h3 {
+h1, h2 {
     color: var(--dark);
 }
 
 h1 {
+    color: var(--dark);
     font-size: 2.8rem;
 }
 
@@ -184,6 +187,13 @@ h2 {
 }
 
 h3 {
+    color: var(--light);
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-family: Hard;
+    color: var(--dark);
     font-size: 1.5rem;
 }
 
@@ -375,6 +385,20 @@ h3 {
         font-size: 1.5rem;
     }
 }
+
+@font-face {
+    font-family: "Hard";
+    src: local(HalvarBreitt2-XBd), url(../pages/HalvarBreitt2-XBd.woff) format('woff');
+  }
+  @font-face {
+    font-family: "Mid";
+    src: local(t2-Rooftop-Medium), url(../pages/t2-Rooftop-Medium.woff) format('woff');
+  }
+  @font-face {
+    font-family: "Light";
+    src: local(t2-Rooftop-Regular), url(../pages/t2-Rooftop-Regular.woff) format('woff');
+  }
+
 
 /* Анимации модального окна */
 .modal-overlay {

@@ -205,7 +205,7 @@ const BotButton = styled(motion.button)`
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  background: linear-gradient(135deg, #A7FC00 0%, #A7FC00 100%);
   color: white;
   border: none;
   border-radius: 30px;
@@ -242,7 +242,7 @@ const ChatContainer = styled(motion.div)`
 `;
 
 const ChatHeader = styled.div`
-  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  background: linear-gradient(135deg, #A7FC00);
   color: white;
   padding: 15px;
   display: flex;
@@ -290,7 +290,7 @@ const ChatMessages = styled.div`
   flex: 1;
   padding: 15px;
   overflow-y: auto;
-  background: #f9f9f9;
+  background: #FFFFFF;
 `;
 
 const Message = styled.div`
@@ -306,7 +306,7 @@ const MessageContent = styled.div`
   border-radius: ${({ isUser }) =>
     isUser ? '15px 15px 0 15px' : '15px 15px 15px 0'};
   background: ${({ isUser }) =>
-    isUser ? 'linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%)' : '#e5e5ea'};
+    isUser ? 'linear-gradient(135deg, #A7FC00)' : '#e5e5ea'};
   color: ${({ isUser }) => isUser ? 'white' : '#333'};
   font-size: 14px;
   line-height: 1.5;
@@ -322,7 +322,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const Button = styled(motion.button)`
-  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  background: linear-gradient(135deg, #A7FC00);
   color: white;
   border: none;
   border-radius: 20px;
@@ -350,13 +350,13 @@ const ChatInput = styled.form`
     font-size: 14px;
 
     &:focus {
-      border-color: #9d50bb;
+      border-color: #A7FC00;
     }
   }
 `;
 
 const SendButton = styled.button`
-  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  background: linear-gradient(135deg, #A7FC00);
   color: white;
   border: none;
   border-radius: 50%;

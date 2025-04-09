@@ -22,17 +22,32 @@
     padding: 0 20px;
 }
 
-h1, h2, h3, h4 {
+h1 {
     margin-bottom: 1rem;
+    font-family: Hard;
+    line-height: 1.2;
+} 
+
+h2 {
+    margin-bottom: 1rem;
+    font-family: Hard;
     line-height: 1.2;
 }
 
-h1 {
-    font-size: 2.5rem;
+h3 {
+    margin-bottom: 1rem;
+    font-family: Hard;
+    line-height: 1.2;
+}
+h4 {
+    margin-bottom: 1rem;
+    font-family: Hard;
+    line-height: 1.2;
 }
 
 h2 {
     font-size: 2rem;
+    font-family: Hard;
     text-align: center;
     margin-bottom: 2rem;
     position: relative;
@@ -41,6 +56,7 @@ h2 {
 h2::after {
     content: '';
     display: block;
+    font-family: Hard;
     width: 80px;
     height: 4px;
     background: var(--primary);
@@ -48,6 +64,7 @@ h2::after {
 }
 
 p {
+    font-family: Light;
     margin-bottom: 1rem;
 }
 
@@ -72,12 +89,14 @@ p {
 
 .hero-content h1 {
     font-size: 2.8rem;
+    font-family: Hard;
     margin-bottom: 1.5rem;
     animation: fadeInDown 1s ease;
 }
 
 .hero-content p {
     font-size: 1.2rem;
+    font-family: Hard;
     margin-bottom: 2rem;
     animation: fadeIn 1.5s ease;
 }
@@ -155,12 +174,14 @@ p {
 
 .stat-item h3 {
     font-size: 2.5rem;
+    font-family: Hard;
     color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
 .stat-item p {
     font-size: 1.1rem;
+    font-family: Hard;
     color: var(--dark);
 }
 
@@ -202,11 +223,13 @@ p {
 
 .service-icon {
     font-size: 2rem;
+    font-family: Hard;
     color: var(--primary);
 }
 
 .service-card h3 {
     margin-bottom: 1rem;
+    font-family: Hard;
     color: var(--primary);
 }
 
@@ -214,15 +237,18 @@ p {
 .cta-section {
     padding: 5rem 0;
     text-align: center;
+    font-family: Hard;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: var(--light);
 }
 
 .cta-section h2 {
+    font-family: Hard;
     color: var(--light);
 }
 
 .cta-section h2::after {
+    font-family: Hard;
     background: var(--light);
 }
 
@@ -242,6 +268,7 @@ p {
     padding: 0.8rem 2rem;
     border-radius: 50px;
     font-size: 1rem;
+    font-family: Hard;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
@@ -318,3 +345,16 @@ p {
         min-width: 120px;
     }
 }
+/* Шрифты */
+@font-face {
+    font-family: "Hard";
+    src: local(HalvarBreitt2-XBd), url(../pages/HalvarBreitt2-XBd.woff) format('woff');
+  }
+  @font-face {
+    font-family: "Mid";
+    src: local(t2-Rooftop-Medium), url(../pages/t2-Rooftop-Medium.woff) format('woff');
+  }
+  @font-face {
+    font-family: "Light";
+    src: local(t2-Rooftop-Regular), url(../pages/t2-Rooftop-Regular.woff) format('woff');
+  }

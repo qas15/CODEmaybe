@@ -8,12 +8,12 @@ import '../styles/Tariff.css';
 const Tariff = () => {
     const tariffs = [
         {
-            name: "МОЙ ЗЕЛЁНЫЙ",
+            name: "ЗЕЛЁНЫЙ",
             badge: "НОВИНКА",
             price: "500 ₽/мес",
             features: [
                 { icon: <FaDatabase />, title: "15 ГБ", desc: "+10 ГБ к тарифу" },
-                { icon: <FaPhoneAlt />, title: "300 минут", desc: "на номера России" },
+                { icon: <FaPhoneAlt />, title: "300 минут", desc: "На номера России" },
                 { icon: <FaLeaf />, title: "Экологичный", desc: "Часть прибыли идет на экопроекты" }
             ],
             isPopular: false
@@ -24,8 +24,8 @@ const Tariff = () => {
             price: "800 ₽/мес",
             features: [
                 { icon: <FaDatabase />, title: "30 ГБ", desc: "+30 ГБ к тарифу" },
-                { icon: <FaPhoneAlt />, title: "600 минут", desc: "на номера России" },
-                { icon: <FaWifi />, title: "Домашний интернет", desc: "от 100 Мбит/с" }
+                { icon: <FaPhoneAlt />, title: "600 минут", desc: "На номера России" },
+                { icon: <FaWifi />, title: "Домашний интернет", desc: "От 100 Мбит/с" }
             ],
             isPopular: true
         },
@@ -35,8 +35,8 @@ const Tariff = () => {
             price: "1200 ₽/мес",
             features: [
                 { icon: <FaBolt />, title: "50 ГБ", desc: "Высокоскоростной интернет" },
-                { icon: <FaTachometerAlt />, title: "Безлимит", desc: "на соцсети и мессенджеры" },
-                { icon: <FaPhoneAlt />, title: "1000 минут", desc: "на все номера России" }
+                { icon: <FaTachometerAlt />, title: "Безлимит", desc: "На соцсети и мессенджеры" },
+                { icon: <FaPhoneAlt />, title: "1000 минут", desc: "На все номера России" }
             ],
             isPopular: false
         },
@@ -45,9 +45,9 @@ const Tariff = () => {
             badge: "VIP",
             price: "2000 ₽/мес",
             features: [
-                { icon: <FaInfinity />, title: "Безлимит", desc: "интернет на максимальной скорости" },
-                { icon: <FaGlobeEurope />, title: "Роуминг", desc: "включено 10 ГБ в Европе" },
-                { icon: <FaPhoneAlt />, title: "Безлимит", desc: "минут на все номера" }
+                { icon: <FaInfinity />, title: "Безлимит", desc: "Максимальная скорость" },
+                { icon: <FaGlobeEurope />, title: "Роуминг", desc: "Включено 10 ГБ в Европе" },
+                { icon: <FaPhoneAlt />, title: "Безлимит", desc: "Минут на все номера" }
             ],
             isPopular: false
         },
@@ -57,7 +57,7 @@ const Tariff = () => {
             price: "300 ₽/мес",
             features: [
                 { icon: <FaDatabase />, title: "5 ГБ", desc: "Базовый пакет интернета" },
-                { icon: <FaPhoneAlt />, title: "100 минут", desc: "на номера России" },
+                { icon: <FaPhoneAlt />, title: "100 минут", desc: "На номера России" },
                 { icon: <FaLeaf />, title: "Без излишеств", desc: "Только самое необходимое" }
             ],
             isPopular: false
@@ -69,7 +69,7 @@ const Tariff = () => {
             features: [
                 { icon: <FaBolt />, title: "50 ГБ", desc: "Ультраскоростной интернет" },
                 { icon: <FaTachometerAlt />, title: "Low Ping", desc: "Оптимизация для игр" },
-                { icon: <FaShieldAlt />, title: "Защита DDoS", desc: "Для стримеров и геймеров" }
+                { icon: <FaShieldAlt />, title: "Защита от DDoS", desc: "Для стримеров и геймеров" }
             ],
             isPopular: false
         }
@@ -130,9 +130,9 @@ const Tariff = () => {
                                     ))}
                                 </div>
 
-                                <button className="buy-button">
+                                {/* <button className="buy-button">
                                     {tariff.isPopular ? 'ПОДКЛЮЧИТЬ' : 'ВЫБРАТЬ'}
-                                </button>
+                                </button> */}
 
                                 {tariff.isPopular && (
                                     <div className="price-freeze">
