@@ -1,186 +1,47 @@
-/* Profile.css */
-
-/* Общие стили */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f7f6;
-    margin: 0;
+/* Основной стиль для контейнера */
+.container-fluid {
+    display: flex;
+    justify-content: center; /* Располагаем элементы в ряд */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
     padding: 0;
+    max-width: 100vw;
+    overflow: hidden;
 }
 
-.profile-container {
+/* Блок с изображением профиля */
+.col-md-3 {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    text-align: center;
     padding: 20px;
 }
 
-.profile-card {
-    background: linear-gradient(135deg, #a3b7d0, #f6e6e0);
-    width: 100%;
-    max-width: 800px;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    animation: slideIn 0.6s ease-out;
+/* Центральная часть с данными */
+.col-md-5 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.profile-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+/* Правая часть с дополнительной информацией */
+.col-md-4 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
+/* Если экран слишком маленький, элементы будут занимать 100% ширины */
+@media (max-width: 767px) {
+    .container-fluid {
+        flex-direction: column;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+
+    .col-md-3, .col-md-5, .col-md-4 {
+        flex-basis: 100%; /* Каждая колонка будет занимать всю ширину */
+        margin-bottom: 15px;
     }
 }
 
-h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
 
-.profile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.profile-header .profile-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #3498db;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    border: 4px solid #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.profile-header .edit-button {
-    padding: 10px 20px;
-    background-color: #1abc9c;
-    color: white;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-.profile-header .edit-button:hover {
-    background-color: #16a085;
-}
-
-.profile-info {
-    font-size: 1.1rem;
-    color: #34495e;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 15px;
-}
-
-.profile-info p {
-    margin-bottom: 15px;
-}
-
-.profile-info span {
-    font-weight: 600;
-    color: #2c3e50;
-}
-
-.error-message {
-    color: #e74c3c;
-    background-color: #f9c2c2;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    text-align: center;
-}
-
-.loading-message {
-    text-align: center;
-    color: #888;
-    font-size: 1.2rem;
-    font-style: italic;
-    margin-top: 20px;
-}
-
-/* Дополнительные блоки */
-.additional-info {
-    margin-top: 40px;
-    background-color: #ecf0f1;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.additional-info h2 {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-.additional-info ul {
-    list-style: none;
-    padding: 0;
-}
-
-.additional-info li {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.additional-info li:last-child {
-    border-bottom: none;
-}
-
-.additional-info li span {
-    font-weight: bold;
-    color: #2980b9;
-}
-
-/* Кнопки */
-.button-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.button-wrapper button {
-    padding: 12px 30px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.button-wrapper button:hover {
-    background-color: #2980b9;
-    transform: translateY(-5px);
-}
 

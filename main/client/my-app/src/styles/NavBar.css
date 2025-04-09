@@ -1,72 +1,75 @@
-/* NavBar.css */
+/* CSS для кнопок в Navbar */
+@font-face {
+    font-family: 'HalvarBreitt';
+    src: url('../../../../../shrift/shrift/._HalvarBreitt2-XBd.otf') format('opentype'); /* Путь от корня проекта */
+    font-weight: normal;
+    font-style: normal;
+}
+.navbar .btn {
+    background-color: #7fff00; /* Салатовый цвет фона */
+    color: black; /* Черный цвет шрифта */
+    border-radius: 25px; /* Закругленные углы */
+    border: none; /* Убираем стандартную рамку */
+    padding: 10px 20px; /* Увеличиваем отступы для удобства */
+    font-weight: 500;
+    font-family: 'HalvarBreitt', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Плавные эффекты */
+}
 
-/* Стиль для всего Navbar */
-.Navbar {
-    background-color: #343a40;
-    padding: 10px 20px;
+.navbar .btn:hover {
+    background-color: #66ff33; /* Более темный салатовый при наведении */
+    transform: scale(1.05); /* Немного увеличиваем кнопку при наведении */
+}
+
+.navbar .btn:focus {
+    outline: none; /* Убираем обводку при фокусе */
 }
 
 
-.LOGO {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
+
+
+
+
+
+.navbar .dropdown-toggle {
+    background-color: #7fff00; /* Салатовый цвет фона */
+    color: black; /* Черный цвет шрифта */
+    padding: 15px 30px; /* Увеличиваем отступы для удобства и длины кнопки */
+    font-weight: 500;
+    font-family: 'HalvarBreitt', sans-serif;
+    border-radius: 8px; /* Более закругленные прямоугольные кнопки */
+    border: none; /* Убираем стандартную рамку */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Плавные эффекты */
+    display: inline-block;
+    text-align: center;
+    width: auto;
     text-decoration: none;
-    padding: 0;
-    margin-right: 20px;
 }
 
-.LOGO:hover {
-    color: #f8f9fa; /* Цвет текста при наведении */
+.navbar .dropdown-toggle:hover {
+    background-color: #66ff33; /* Более темный салатовый при наведении */
+    transform: scale(1.1); /* Немного увеличиваем кнопку при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Добавляем тень при наведении */
 }
 
-/* Стиль для кнопок в Navbar */
-.Nav .btn {
-    border-radius: 5px; /* Округление углов */
-    font-size: 1rem; /* Размер шрифта для кнопок */
-    padding: 8px 20px; /* Отступы внутри кнопок */
+.navbar .dropdown-toggle:focus {
+    outline: none; /* Убираем обводку при фокусе */
 }
 
-.Nav .btn:hover {
-    background-color: #495057; /* Цвет фона при наведении */
-    color: #ffffff; /* Белый цвет текста при наведении */
-}
-
-/* Кнопка для выхода */
-.Nav .btn-outline-light {
-    border-color: #ffffff; /* Белая рамка для кнопки */
-    color: #ffffff; /* Белый цвет текста */
-}
-
-.Nav .btn-outline-light:hover {
-    background-color: #ffffff; /* Белый фон при наведении */
-    color: #343a40; /* Темный текст при наведении */
-}
-
-/* Расположение элементов Nav */
-.Nav {
+/* Стили для выпадающего меню */
+.navbar .dropdown-menu {
+    background-color: #7fff00; /* Салатовый фон для выпадающего меню */
+    padding: 15px 0; /* Увеличиваем отступы */
+    border-radius: 8px; /* Закругленные углы для выпадающего меню */
+    width: 240px; /* Немного увеличиваем ширину */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Добавляем тень для лучшего эффекта */
     display: flex;
-    align-items: center; /* Выравнивание элементов по центру */
-    margin-left: auto; /* Отодвигаем элементы вправо */
-}
-
-/* Стили для кнопки Авторизация */
-.Nav .btn-outline-light {
-    font-size: 1rem; /* Размер шрифта */
-    padding: 8px 15px; /* Отступы */
-}
-
-/* Если нужно, можно добавить медиа-запросы для адаптивности */
-@media (max-width: 768px) {
-    /* Сжимаем лого и изменяем кнопки для маленьких экранов */
-    .LOGO {
-        font-size: 1.2rem;
-    }
-
-    .Nav .btn {
-        font-size: 0.9rem;
-        padding: 6px 15px;
-    }
+    flex-direction: column;
+    align-items: stretch; /* Сделать элементы меню по ширине */
+    z-index: 10;
+    position: absolute;
+    top: 100%;
+    left: 0;
 }
 
 
@@ -78,3 +81,85 @@
 
 
 
+
+
+
+/* Стили для кнопки меню */
+.menu-button {
+    background-color: #7fff00; /* Салатовый цвет фона */
+    color: black; /* Черный цвет шрифта */
+    border-radius: 25px; /* Закругленные углы */
+    border: none; /* Убираем стандартную рамку */
+    padding: 10px 20px; /* Увеличиваем отступы для удобства */
+    font-weight: 500;
+    width: 100%;
+    font-family: 'HalvarBreitt', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: #66ff33;
+    transform: scale(1.05);
+}
+
+/* Стили для выпадающего меню */
+.menu {
+    position: absolute;
+    top: 80%;
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 9999;
+    border-radius: 10px;
+    border: 0.5px solid black; /* Черная обводка */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Тень */
+}
+
+
+.menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu__list {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+}
+
+.menu__item {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu__item:hover {
+    background-color: #2652ff;
+    transform: scale(1.05);
+    color: white;
+}
+
+/* Стили для иконок в меню */
+.icon {
+    margin-right: 15px;
+    font-size: 20px;
+    color: inherit;
+}

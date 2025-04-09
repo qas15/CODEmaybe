@@ -3,16 +3,20 @@ import {
     REGISTRATION_ROUTE,
     SHOP_ROUTE,
     PROFILE,
-    PROFILES
+    ABOUT,
+    TARIFFS,
+    REVIEWS, PARTNERS,
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
 import Reg from './pages/Register'
 import Profile from './pages/Profile';
-import Profiles from './pages/Profiles';
-
+import Tariffs from './pages/Plans'
+import Reviews from "./pages/Reviews";
 
 import Main from './pages/Main'
+import About from "./pages/About";
+import Partners from "./pages/Partners";
 
 export const authRoutes = [
     {
@@ -22,12 +26,20 @@ export const authRoutes = [
 ]
 export const publicRoutes = [
     {
-        path: SHOP_ROUTE,
-        Component: Main
+        path: TARIFFS,
+        Component: Tariffs
     },
     {
-        path: PROFILES,
-        Component: Profiles
+        path: PARTNERS,
+        Component: Partners
+    },
+    {
+        path: ABOUT,
+        Component: About
+    },
+    {
+        path: SHOP_ROUTE,
+        Component: Main
     },
     {
         path: LOGIN_ROUTE,
@@ -36,5 +48,9 @@ export const publicRoutes = [
     {
         path: REGISTRATION_ROUTE,
         Component: Reg
+    },
+    {
+        path: REVIEWS,
+        Component: Reviews
     },
 ]

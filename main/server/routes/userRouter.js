@@ -9,6 +9,6 @@ router.post('/registration', userController.registration)
 router.post('/login',userController.login)
 router.get('/auth', authMiddleware, userController.check)
 router.get('/:email', userController.getUserByEmail);
-
+router.post('/update/:email', userController.updateProfile)
 
 module.exports = router

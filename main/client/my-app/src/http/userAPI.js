@@ -1,10 +1,19 @@
-const SERVER_ADDR = "http://localhost:3001";
+import profile from "../pages/Profile";
+
+const SERVER_ADDR = "http://localhost:5000";
 
 
 export class ErrorResponse {
     constructor (error, message) {
         this.error = error;
         this.message = message;
+    }
+}
+
+export class CommentResponse {
+    constructor (stars, text) {
+        this.stars = stars;
+        this.text = text;
     }
 }
 
@@ -101,6 +110,19 @@ export async function login(email, password) {
     return new LoginResponse(result["redirect_url"]);
 }
 
+export async function NewComment(stars, text) {
+    const result = await post(`${SERVER_ADDR}/api/comments/new`, {
+        stars,
+        text,
+    });
+    
+    if (result["error"]) {
+        return new ErrorResponse(result["error"], result["message"]);
+    }
+
+    return new SuccessResponse();
+}
+
 export async function check() {
     const result = await get(`${SERVER_ADDR}/api/auth/check`, {});
 
@@ -120,6 +142,17 @@ export async function getProfile() {
     return new ProfileResponse(result["name"], result["email"], result["age"], result["phone"]);
 }
 
+export async function getComments() {
+    const result = await get(`${SERVER_ADDR}/api/comments/get`, {});
+    let ret = []
+    for (let profile of result) {
+        ret.push(
+            new CommentResponse(profile["stars"], profile["text"])
+        ); 
+    }
+    return ret
+}
+
 export async function getOtherProfile(id) {
     const result = await get(`${SERVER_ADDR}/api/user/my_profile`, {
         "user_id": id,
@@ -132,16 +165,12 @@ export async function logout() {
     return null;
 }
 
-export async function getProfiles() {
-    const result = await get(`${SERVER_ADDR}/api/user/get_profiles`, {});
-    
-    console.log(result);
-    
-    let ret = [];
-    for (let profile of result) {
-        ret.push(
-            new ProfileResponse(profile["name"], profile["email"], profile["age"], profile["phone"])
-        );
-    }
-    return ret;
+
+export async function HandleSubmit(name, surname, phone, email, age, hobbies, detailes) {
+    const response = await getProfile()
+    const gmail = response.email
+    console.log(name, surname, phone, email, age, hobbies, detailes)
+    await get(`${SERVER_ADDR}/api/user/update`, {name, email: gmail, age, phone});
+    return null;
 }
+

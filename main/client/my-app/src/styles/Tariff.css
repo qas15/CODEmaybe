@@ -1,0 +1,281 @@
+:root {
+    /* Зеленая палитра Tele2 */
+    --primary: #00bfff;  /* Основной зеленый */
+    --primary-dark: #00bfff;
+    --primary-light: #E6F4EA;
+    --secondary: #f8f9fa;
+    --dark: #333333;
+    --light: #ffffff;
+    --gray: #f5f5f5;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tariff-page {
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.tariff-hero {
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+    padding: 80px 0;
+    text-align: center;
+    color: var(--dark);
+}
+
+.tariff-hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: var(--primary-dark);
+}
+
+.tariff-hero p {
+    font-size: 1.2rem;
+    color: var(--dark);
+}
+
+/* Tariffs Section */
+.tariffs-section {
+    padding: 60px 0;
+    background-color: var(--gray);
+}
+
+.tariffs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tariff-card {
+    background-color: var(--light);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    border: 1px solid var(--gray);
+}
+
+.tariff-card.popular {
+    border: 2px solid var(--primary);
+    transform: translateY(-10px);
+}
+
+.tariff-card.popular::before {
+    content: 'САМЫЙ ВЫГОДНЫЙ';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.tariff-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-dark);
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.features {
+    margin: 25px 0;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--primary-dark);
+    font-size: 1.2rem;
+}
+
+.feature-text h3 {
+    font-size: 1.1rem;
+    margin-bottom: 3px;
+}
+
+.feature-text p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.buy-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 15px;
+}
+
+.buy-button:hover {
+    background-color: var(--primary-dark);
+}
+
+.tariff-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--primary-dark);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.price-freeze {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: var(--primary-dark);
+    font-weight: bold;
+}
+
+.freeze-icon {
+    margin-right: 5px;
+}
+
+/* Advantages Section */
+.advantages-section {
+    padding: 60px 0;
+    background-color: var(--light);
+}
+
+.advantages-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--primary-dark);
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.advantage-card {
+    background-color: var(--secondary);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+}
+
+.advantage-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.advantage-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+}
+
+.advantage-card p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 80px 0;
+    background-color: var(--primary-dark);
+    color: white;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+}
+
+.cta-button {
+    padding: 15px 40px;
+    background-color: white;
+    color: var(--primary-dark);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tariff-hero h1 {
+        font-size: 2rem;
+    }
+
+    .tariffs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tariff-card.popular {
+        transform: none;
+    }
+}
