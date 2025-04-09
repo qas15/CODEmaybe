@@ -49,7 +49,7 @@
     background-color: var(--partners-light);
     padding: 30px;
     border-radius: 10px;
-    max-width: 500px;
+    max-width: 600px;
     width: 90%;
     position: relative;
     box-shadow: var(--partners-shadow);
@@ -109,10 +109,10 @@ section {
 }
 .modal-body p {
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: 1,7;
     margin-bottom: 1.2rem;
     color: var(--partners-dark-gray);
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 0.02em;
 }
 
@@ -130,7 +130,7 @@ section {
     left: 0;
     width: 100%;
     height: 2px;
-    opacity: 0.7;
+    opacity: 0,8;
 }
 
 .modal-body ul {
@@ -152,7 +152,7 @@ section {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.5rem;
+    top: 0.7rem;
     width: 8px;
     height: 8px;
     background-color: var(--partners-electric-blue);

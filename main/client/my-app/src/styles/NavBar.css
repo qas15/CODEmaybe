@@ -12,12 +12,13 @@
     border: none; /* Убираем стандартную рамку */
     padding: 10px 20px; /* Увеличиваем отступы для удобства */
     font-weight: 500;
-    font-family: 'HalvarBreitt', sans-serif;
+    font-family: Light;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Плавные эффекты */
 }
 
 .navbar .btn:hover {
-    background-color: #66ff33; /* Более темный салатовый при наведении */
+    background-color: #0000FF; /* Более темный салатовый при наведении */
+    color: #FFFFFF;
     transform: scale(1.05); /* Немного увеличиваем кнопку при наведении */
 }
 
