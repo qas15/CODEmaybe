@@ -11,7 +11,8 @@ export class ErrorResponse {
 }
 
 export class CommentResponse {
-    constructor (stars, text) {
+    constructor (stars, text, name) {
+        this.name = name;
         this.stars = stars;
         this.text = text;
     }
@@ -146,8 +147,9 @@ export async function getComments() {
     const result = await get(`${SERVER_ADDR}/api/comments/get`, {});
     let ret = []
     for (let profile of result) {
+        console.log(profile);
         ret.push(
-            new CommentResponse(profile["stars"], profile["text"])
+            new CommentResponse(profile["stars"], profile["text"], profile["user_name"])
         ); 
     }
     return ret
