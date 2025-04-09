@@ -17,7 +17,7 @@
     "mobx-react-lite": "^4.1.0",
     "ol": "^10.5.0",
     "react": "^19.0.0",
-    "react-bootstrap": "^2.10.8",
+    "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",
     "react-map-gl": "^8.0.2",
