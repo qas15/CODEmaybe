@@ -3,9 +3,11 @@ import {
     REGISTRATION_ROUTE,
     SHOP_ROUTE,
     PROFILE,
+    MAP_ROUTE,
     ABOUT,
     TARIFFS,
-    REVIEWS, PARTNERS,
+    REVIEWS, 
+    PARTNERS,
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
@@ -13,8 +15,8 @@ import Reg from './pages/Register'
 import Profile from './pages/Profile';
 import Tariffs from './pages/Plans'
 import Reviews from "./pages/Reviews";
-
 import Main from './pages/Main'
+import OpenLayersMap from "./components/Map";
 import About from "./pages/About";
 import Partners from "./pages/Partners";
 
@@ -48,6 +50,10 @@ export const publicRoutes = [
     {
         path: REGISTRATION_ROUTE,
         Component: Reg
+    },
+    {
+        path: MAP_ROUTE,
+        Component: OpenLayersMap
     },
     {
         path: REVIEWS,

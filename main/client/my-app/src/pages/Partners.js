@@ -105,14 +105,14 @@ const Partners = () => {
                             <p>Чтобы узнать, какие закупки мы планируем в 2025, вы можете посмотреть план закупок.</p>
                         </div>
                         <div className="content-card accent">
-                            <h3>Площадки для закупок</h3>
+                            <h3 style={{color: 'white'}}>Площадки для закупок</h3>
                             <ul>
                                 <li>Свыше 5 млн рублей (без НДС) - ЕЭТП «Росэлторг»</li>
                                 <li>До 5 млн рублей - ЭТП ГПБ Клик и Bidzaar</li>
                             </ul>
                         </div>
                         <div className="content-card dark">
-                            <h3>Наши принципы</h3>
+                            <h3 className='exstraMain'>Наши принципы</h3>
                             <p>Мы ценим открытость и честность. В своей работе мы строго следуем Антикоррупционной политике и ожидаем того же от партнеров.</p>
                         </div>
                     </div>
@@ -178,12 +178,12 @@ const Partners = () => {
                         </div>
                         <div className="program-card accent">
                             <div className="program-icon"><FaBuilding /></div>
-                            <h3>Арендодателям</h3>
+                            <h3 style={{color: 'white'}}>Арендодателям</h3>
                             <p>Предлагайте площадки для установки оборудования на взаимовыгодных условиях.</p>
                         </div>
                         <div className="program-card dark">
                             <div className="program-icon"><FaGlobe /></div>
-                            <h3>Интернет-бизнесам</h3>
+                            <h3 className='exstraMain'>Интернет-бизнесам</h3>
                             <p>Зарабатывайте, размещая партнерские ссылки Tele2 на своих ресурсах.</p>
                         </div>
                     </div>

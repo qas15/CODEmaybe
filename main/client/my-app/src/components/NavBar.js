@@ -83,7 +83,7 @@ const NavBar = () => {
                             Профиль
                         </Button>
                     )}
-
+                    
                     {user.isAuth ? (
                         <Button
                             variant="outline-light"

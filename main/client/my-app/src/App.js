@@ -9,6 +9,7 @@ import AppRouter from "./components/AppRouter";
 import "./pages/HalvarBreitt2-XBd.woff"
 import './pages/t2-Rooftop-Medium.woff'
 import './pages/t2-Rooftop-Regular.woff'
+import ChatBot from "./components/ChatBot";
 
 const App = observer(() => {
     const { user, setUser } = useContext(Context); // Получаем user и setUser из контекста
@@ -50,16 +51,17 @@ const App = observer(() => {
         <BrowserRouter>
             <NavBar />
             <AppRouter />
+            <ChatBot />
         </BrowserRouter>
     );
 });
-//<Routes>
-//<Route path="/login" element={<Login />} />
-//<Route path="/register" element={<Register />} />
-//<Route path="/" element={<Main />} />
-//<Route path="/profile" element={<Profile />} />
-//<Route path="/profiles" element={<Profiles />} />
-//</Routes>
+// <Routes>
+// <Route path="/login" element={<Login />} />
+// <Route path="/register" element={<Register />} />
+// <Route path="/" element={<Main />} />
+// <Route path="/profile" element={<Profile />} />
+// <Route path="/profiles" element={<Profiles />} />
+// </Routes>
 export default App;
 
 
