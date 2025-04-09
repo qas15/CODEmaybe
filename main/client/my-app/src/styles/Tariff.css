@@ -15,7 +15,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .tariff-page {
@@ -126,10 +125,12 @@
     margin-right: 15px;
     color: var(--primary-dark);
     font-size: 1.2rem;
+    
 }
 
 .feature-text h3 {
     font-size: 1.1rem;
+    color: var(--primary-dark);
     margin-bottom: 3px;
 }
 
@@ -138,7 +139,7 @@
     color: #7f8c8d;
 }
 
-.buy-button {
+/* .buy-button {
     width: 100%;
     padding: 12px;
     background-color: var(--primary);
@@ -153,7 +154,7 @@
 
 .buy-button:hover {
     background-color: var(--primary-dark);
-}
+} */
 
 .tariff-badge {
     position: absolute;

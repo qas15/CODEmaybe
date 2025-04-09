@@ -100,16 +100,14 @@ const Partners = () => {
                     </div>
                     <div className="content-grid">
                         <div className="content-card">
-                            <h3>Процесс закупок</h3>
+                            <h5>Процесс закупок</h5>
                             <p>Мы проводим закупки в соответствии с Положением о закупках товаров, работ, услуг ГК Т2 Мобайл.</p>
                             <p>Чтобы узнать, какие закупки мы планируем в 2025, вы можете посмотреть план закупок.</p>
                         </div>
                         <div className="content-card accent">
                             <h3>Площадки для закупок</h3>
-                            <ul>
-                                <li>Свыше 5 млн рублей (без НДС) - ЕЭТП «Росэлторг»</li>
-                                <li>До 5 млн рублей - ЭТП ГПБ Клик и Bidzaar</li>
-                            </ul>
+                            <p>Свыше 5 млн рублей (без НДС) - ЕЭТП «Росэлторг»</p>
+                            <p>До 5 млн рублей - ЭТП ГПБ Клик и Bidzaar</p>
                         </div>
                         <div className="content-card dark">
                             <h3>Наши принципы</h3>
@@ -173,7 +171,7 @@ const Partners = () => {
                     <div className="programs-grid">
                         <div className="program-card">
                             <div className="program-icon"><FaUsers /></div>
-                            <h3>Агентам и дилерам</h3>
+                            <h5>Агентам и дилерам</h5>
                             <p>Привлекайте клиентов и получайте комиссионное вознаграждение без специальных знаний в сфере связи.</p>
                         </div>
                         <div className="program-card accent">
@@ -201,14 +199,14 @@ const Partners = () => {
                         <div className="opportunity-item">
                             <div className="opp-icon"><FaFileAlt /></div>
                             <div className="opp-content">
-                                <h3>Электронный документооборот</h3>
+                                <h5>Электронный документооборот</h5>
                                 <p>Подключение к ЭДО для обмена бухгалтерскими документами между юридическими лицами.</p>
                             </div>
                         </div>
                         <div className="opportunity-item">
                             <div className="opp-icon"><FaShoppingCart /></div>
                             <div className="opp-content">
-                                <h3>Продажа непрофильных активов</h3>
+                                <h5>Продажа непрофильных активов</h5>
                                 <p>ООО «Т2 Мобайл» осуществляет продажу непрофильных активов на выгодных условиях.</p>
                             </div>
                         </div>
