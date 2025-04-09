@@ -1,0 +1,42 @@
+body {
+    overflow-x: hidden;
+}
+
+@keyframes run {
+    0% {
+        margin-left: -40vw;
+        opacity: 1;
+    }
+
+    99% {
+        margin-left: 100vw;
+        opacity: 1;
+    }
+
+    100% {
+        margin-left: 100vw;
+        opacity: 0;
+    }
+}
+
+#runningString {
+    width: 200vw;
+    overflow: hidden;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: #00BFFF;
+    color: #fff;
+}
+
+#runningString p {
+    animation: run linear infinite 10s;
+    padding: 5px;
+    font-size: 16px;
+    margin: 0;
+}
