@@ -329,7 +329,7 @@ function OpenLayersMap() {
 
     return (
         <Row style={{ background: "black" }}>
-            <div id="map" style={{ width: '50vw', height: '80vh' }}/>
+            <div id="map" style={{ width: '60vw', height: '80vh' }}/>
             <div ref={tooltipElement} style={{
                 position: 'absolute',
                 backgroundColor: 'white',

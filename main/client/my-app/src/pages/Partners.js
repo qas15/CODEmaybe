@@ -37,10 +37,10 @@ const FranchiseModal = ({ isOpen, onClose }) => {
                 <button className="modal-close-btn" onClick={onClose}>
                     <FaTimes />
                 </button>
-                <h3 className="modal-title">Франчайзинг от Tele2</h3>
+                <h3 className="modal-title">Франчайзинг от t2</h3>
                 <div className="modal-body">
                     <p className="modal-intro">
-                        <strong>Tele2</strong> предлагает <span className="highlight">уникальные условия</span> для партнеров
+                        <strong>t2</strong> предлагает <span className="highlight">уникальные условия</span> для партнеров
                     </p>
 
                     <div className="benefits-grid">
@@ -84,7 +84,7 @@ const Partners = () => {
             {/* Hero Section */}
             <section className="partners-hero">
                 <div className="container">
-                    <h1>ПАРТНЕРСТВО С TELE2</h1>
+                    <h1>ПАРТНЕРСТВО С t2</h1>
                     <p>Развивайте бизнес вместе с лидером телекоммуникационного рынка</p>
                 </div>
             </section>
@@ -92,8 +92,8 @@ const Partners = () => {
             {/* Procurement Block */}
             <section className="procurement-block">
                 <div className="container">
-                    <div className="section-header">
-                        <FaShoppingCart className="section-icon" />
+                    <div className="section-header" style={{alignSelf: "center", width: "100%", justifyContent: "center", "display": "flex"}}>
+                        {/* <FaShoppingCart className="section-icon" /> */}
                         <h2>ПОТЕНЦИАЛЬНЫМ ПОСТАВЩИКАМ</h2>
                     </div>
                     <div className="content-grid">
@@ -106,11 +106,6 @@ const Partners = () => {
                             <h3>Площадки для закупок</h3>
                             <p>Свыше 5 млн рублей (без НДС) - ЕЭТП «Росэлторг»</p>
                             <p>До 5 млн рублей - ЭТП ГПБ Клик и Bidzaar</p>
-                            <h3 style={{color: 'white'}}>Площадки для закупок</h3>
-                            <ul>
-                                <li>Свыше 5 млн рублей (без НДС) - ЕЭТП «Росэлторг»</li>
-                                <li>До 5 млн рублей - ЭТП ГПБ Клик и Bidzaar</li>
-                            </ul>
                         </div>
                         <div className="content-card dark">
                             <h3 className='exstraMain'>Наши принципы</h3>
@@ -123,14 +118,14 @@ const Partners = () => {
             {/* Franchising Block */}
             <section className="franchising-block">
                 <div className="container">
-                    <div className="section-header">
-                        <FaStore className="section-icon" />
+                    <div className="section-header" style={{alignSelf: "center", width: "100%", justifyContent: "center", "display": "flex"}}>
+                        {/* <FaStore className="section-icon" /> */}
                         <h2>ФРАНЧАЙЗИНГ</h2>
                     </div>
                     <div className="two-columns">
                         <div className="left-col">
                             <h3>Преимущества</h3>
-                            <p>Розничная сеть Tele2 развивается по принципу франчайзинга и насчитывает более 3000 точек по всей России.</p>
+                            <p>Розничная сеть t2 развивается по принципу франчайзинга и насчитывает более 3000 точек по всей России.</p>
                             <p>Мы предлагаем готовое бизнес-решение "под ключ" - от стратегии до оформления салона.</p>
                             <button
                                 className="btn-primary"
@@ -167,8 +162,8 @@ const Partners = () => {
             {/* Partners Programs */}
             <section className="programs-block">
                 <div className="container">
-                    <div className="section-header">
-                        <FaHandshake className="section-icon" />
+                    <div className="section-header" style={{alignSelf: "center", width: "100%", justifyContent: "center", "display": "flex"}}>
+                        {/* <FaHandshake className="section-icon" /> */}
                         <h2>ПАРТНЕРСКИЕ ПРОГРАММЫ</h2>
                     </div>
                     <div className="programs-grid">
@@ -185,7 +180,7 @@ const Partners = () => {
                         <div className="program-card dark">
                             <div className="program-icon"><FaGlobe /></div>
                             <h3 className='exstraMain'>Интернет-бизнесам</h3>
-                            <p>Зарабатывайте, размещая партнерские ссылки Tele2 на своих ресурсах.</p>
+                            <p>Зарабатывайте, размещая партнерские ссылки t2 на своих ресурсах.</p>
                         </div>
                     </div>
                 </div>
@@ -194,8 +189,8 @@ const Partners = () => {
             {/* Other Opportunities */}
             <section className="opportunities-block">
                 <div className="container">
-                    <div className="section-header">
-                        <FaChartLine className="section-icon" />
+                    <div className="section-header" style={{alignSelf: "center", width: "100%", justifyContent: "center", "display": "flex"}}>
+                        {/* <FaChartLine className="section-icon" /> */}
                         <h2>ДРУГИЕ ВОЗМОЖНОСТИ</h2>
                     </div>
                     <div className="opportunities-list">
@@ -220,7 +215,7 @@ const Partners = () => {
             {/* CTA Section */}
             <section className="partners-cta">
                 <div className="container">
-                    <h2>ГОТОВЫ СТАТЬ ПАРТНЕРОМ TELE2?</h2>
+                    <h2 style={{color: '#fff'}}>ГОТОВЫ СТАТЬ ПАРТНЕРОМ t2?</h2>
                     <p>Оставьте заявку, и наш менеджер свяжется с вами для обсуждения условий сотрудничества</p>
                     <button className="btn-large">ОТПРАВИТЬ ЗАЯВКУ</button>
                 </div>

@@ -149,7 +149,7 @@ const Tariff = () => {
             {/* Advantages Section */}
             <section className="advantages-section">
                 <div className="container">
-                    <h2>ПРЕИМУЩЕСТВА TELE2</h2>
+                    <h2>ПРЕИМУЩЕСТВА t2</h2>
                     <div className="advantages-grid">
                         {advantages.map((advantage, index) => (
                             <div className="advantage-card" key={index}>

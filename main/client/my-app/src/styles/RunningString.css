@@ -3,17 +3,17 @@ body {
 }
 
 @keyframes run {
-    0% {
+    100% {
         margin-left: -40vw;
         opacity: 1;
     }
 
-    99% {
+    1% {
         margin-left: 100vw;
         opacity: 1;
     }
 
-    100% {
+    0% {
         margin-left: 100vw;
         opacity: 0;
     }

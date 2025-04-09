@@ -1,7 +1,7 @@
 :root {
     /* Зеленая палитра Tele2 */
     --primary: #00bfff;  /* Основной зеленый */
-    --primary-dark: #00bfff;
+    --primary-dark: #000;
     --primary-light: #E6F4EA;
     --secondary: #f8f9fa;
     --dark: #333333;
@@ -233,7 +233,7 @@
 /* CTA Section */
 .cta-section {
     padding: 80px 0;
-    background-color: var(--primary-dark);
+    background-color: #000;
     color: white;
     text-align: center;
 }
