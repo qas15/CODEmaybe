@@ -11,7 +11,7 @@ import {
 } from "./utils/consts";
 
 import Log from '../src/pages/Login'
-import Reg from './pages/Register'
+import Register from './pages/Register'
 import Profile from './pages/Profile';
 import Tariffs from './pages/Plans'
 import Reviews from "./pages/Reviews";
@@ -49,7 +49,7 @@ export const publicRoutes = [
     },
     {
         path: REGISTRATION_ROUTE,
-        Component: Reg
+        Component: Register
     },
     {
         path: MAP_ROUTE,

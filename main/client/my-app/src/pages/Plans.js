@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { FaDatabase, FaPhoneAlt, FaWifi, FaInfinity, FaCalendarCheck,
     FaGlobeEurope, FaShieldAlt, FaExchangeAlt,
     FaSnowflake, FaBolt, FaLeaf, FaTachometerAlt } from 'react-icons/fa';
@@ -96,7 +96,26 @@ const Tariff = () => {
             description: "Меняйте минуты на гигабайты и обратно"
         }
     ];
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
 
+        // Анимируем только карточки преимуществ
+        document.querySelectorAll('.advantage-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        return () => observer.disconnect();
+    }, []);
     return (
         <div className="tariff-page">
             {/* Hero Section */}
@@ -166,7 +185,7 @@ const Tariff = () => {
                 <div className="container">
                     <h2>НЕ НАШЛИ ПОДХОДЯЩИЙ ТАРИФ?</h2>
                     <p>Наши консультанты помогут подобрать оптимальное решение специально для вас</p>
-                </div>
+А                </div>
             </section>
         </div>
     );

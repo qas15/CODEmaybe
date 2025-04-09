@@ -14,6 +14,8 @@
     /* Остальные переменные */
     --partners-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     --partners-transition: all 0.3s ease;
+
+    --delay: 0.1s;
 }
 
 /* Все стили должны быть вложены в .partners-page */
@@ -61,7 +63,7 @@
     background: none;
     border: none;
     font-size: 1.2rem;
-    font-family: Hard;
+    font-family: Hard, serif;
     cursor: pointer;
     color: var(--partners-dark-gray);
 }
@@ -133,7 +135,7 @@ section {
     left: 0;
     width: 100%;
     height: 2px;
-    opacity: 0,8;
+    opacity: 0.8;
 }
 
 .modal-body ul {
@@ -392,15 +394,15 @@ h5 {
 @font-face {
     font-family: "Hard";
     src: local(HalvarBreitt2-XBd), url(../pages/HalvarBreitt2-XBd.woff) format('woff');
-  }
-  @font-face {
+}
+@font-face {
     font-family: "Mid";
     src: local(t2-Rooftop-Medium), url(../pages/t2-Rooftop-Medium.woff) format('woff');
-  }
-  @font-face {
+}
+@font-face {
     font-family: "Light";
     src: local(t2-Rooftop-Regular), url(../pages/t2-Rooftop-Regular.woff) format('woff');
-  }
+}
 
 
 /* Анимации модального окна */
@@ -525,3 +527,115 @@ h5 {
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
+
+/* Анимации появления секций */
+.section-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: var(--delay);
+}
+
+.section-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Анимация для карточек внутри секций */
+.content-grid > *,
+.programs-grid > *,
+.stats-grid > *,
+.opportunities-list > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section-animate.visible .content-grid > *,
+.section-animate.visible .programs-grid > *,
+.section-animate.visible .stats-grid > *,
+.section-animate.visible .opportunities-list > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Задержки для элементов внутри секций */
+.section-animate.visible .content-grid > *:nth-child(1) { transition-delay: 0.1s; }
+.section-animate.visible .content-grid > *:nth-child(2) { transition-delay: 0.2s; }
+.section-animate.visible .content-grid > *:nth-child(3) { transition-delay: 0.3s; }
+
+.section-animate.visible .programs-grid > *:nth-child(1) { transition-delay: 0.1s; }
+.section-animate.visible .programs-grid > *:nth-child(2) { transition-delay: 0.2s; }
+.section-animate.visible .programs-grid > *:nth-child(3) { transition-delay: 0.3s; }
+
+.section-animate.visible .stats-grid > *:nth-child(1) { transition-delay: 0.1s; }
+.section-animate.visible .stats-grid > *:nth-child(2) { transition-delay: 0.2s; }
+.section-animate.visible .stats-grid > *:nth-child(3) { transition-delay: 0.3s; }
+
+.section-animate.visible .opportunities-list > *:nth-child(1) { transition-delay: 0.1s; }
+.section-animate.visible .opportunities-list > *:nth-child(2) { transition-delay: 0.2s; }
+
+/* Анимация для заголовков секций */
+.section-header {
+    overflow: hidden;
+}
+
+.section-header h2 {
+    display: inline-block;
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-animate.visible .section-header h2 {
+    transform: translateY(0);
+}
+
+/* Добавьте это в Partners.css */
+
+/* Анимации появления секций */
+.section-animate {
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+    transition-delay: var(--delay);
+}
+
+.section-animate:not(.no-transform) {
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-animate.visible {
+    opacity: 1;
+}
+
+.section-animate:not(.no-transform).visible {
+    transform: translateY(0);
+}
+
+/* Для hero секции */
+.partners-hero {
+    position: relative;
+    padding: 100px 0;
+    text-align: center;
+    color: var(--dark);
+    overflow: hidden;
+}
+
+.partners-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Остальные стили остаются без изменений */

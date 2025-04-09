@@ -3,7 +3,7 @@ import { Container, Form, Button, Row, Card, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { ErrorResponse, registration } from "../http/userAPI";
 import { update } from "../AppContextProvider";  // Импорт контекста
-import "../styles/Auth.css";
+import "../styles/Register.css";
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -60,56 +60,65 @@ const Register = () => {
     };
 
     return (
-        <Container>
-            <Card className="p-4">
-                <h2>Регистрация</h2>
-                <Form onSubmit={handleSubmit}>
+        <Container className="register-container">
+            <Card className="register-card">
+                <div className="register-header">
+                    <h2 className="register-title">Регистрация</h2>
+                </div>
+                <Form onSubmit={handleSubmit} className="register-form">
                     <Form.Control
+                        className="register-input"
                         type="text"
                         placeholder="Имя"
                         value={name}
                         onChange={e => setName(e.target.value)}
                     />
                     <Form.Control
+                        className="register-input"
                         type="text"
                         placeholder="Фамилия"
                         value={surname}
                         onChange={e => setSurname(e.target.value)}
                     />
                     <Form.Control
+                        className="register-input"
                         type="number"
                         placeholder="Возраст"
                         value={age}
                         onChange={e => setAge(e.target.value)}
                     />
                     <Form.Control
+                        className="register-input"
                         type="text"
                         placeholder="Телефон"
                         value={phone}
                         onChange={e => setPhone(e.target.value)}
                     />
                     <Form.Control
+                        className="register-input"
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
                     <Form.Control
+                        className="register-input"
                         type="password"
                         placeholder="Пароль"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                     />
-                    {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
-                    <Row>
-                        <Button type="submit" disabled={loading}>
-                            {loading ? <Spinner animation="border" size="sm" /> : "Зарегистрироваться"}
-                        </Button>
-                    </Row>
-                </Form>
+                    {error && <div className="register-error">{error}</div>}
+                    <Button
+                        type="submit"
+                        className="register-button"
+                        disabled={loading}
+                    >
+                        {loading ? <Spinner animation="border" size="sm" /> : "Зарегистрироваться"}
+                    </Button>
+                </ Form>
             </Card>
         </Container>
     );
 };
-
 export default Register;
