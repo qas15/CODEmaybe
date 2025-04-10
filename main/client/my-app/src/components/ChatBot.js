@@ -9,7 +9,7 @@ const ChatBot = () => {
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef(null);
-
+    const token = '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'
     // Начальное сообщение при открытии чата
     useEffect(() => {
         if (isOpen && messages.length === 0) {
@@ -42,13 +42,13 @@ const ChatBot = () => {
                 response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer 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',
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         model: 'nvidia/llama-3.3-nemotron-super-49b-v1:free',
                         messages: [
-                            { role: 'user', content: 'Ты консультант t2. Кратко расскажи про новости 2025 (100-120 слов): тарифы, акции, события. Без "не знаю". Примеры: "Новый тариф X". Ссылка: t2.ru. Напиши подряд текстом с абзацами но не как схемой' },
+                            { role: 'user', content: 'Ты консультант t2. Кратко расскажи про новости 2025 (100-120 слов): тарифы, акции, события. Без "не знаю". Примеры: "Новый тариф X". Ссылка: t2.ru. Напиши подряд текстом с абзацами но не как схемой и на русском языке.' },
                         ],
                     }),
                 });
@@ -59,14 +59,14 @@ const ChatBot = () => {
                 setMessages(prev => [...prev, {
                     text: botResponse,
                     isUser: false,
-                    buttons: ['Другие новости', 'Тарифы', 'Акции']
+                    buttons: ['Другие новости', 'Тарифы']
                 }]);
             } else {
                 // Обычный запрос для других сообщений
                 response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer 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',
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
@@ -84,7 +84,7 @@ const ChatBot = () => {
                 setMessages(prev => [...prev, {
                     text: botResponse,
                     isUser: false,
-                    buttons: ['Новости 2025', 'Тарифы', 'Акции']
+                    buttons: ['Новости 2025', 'Тарифы']
                 }]);
             }
         } catch (error) {

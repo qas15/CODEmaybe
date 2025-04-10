@@ -146,14 +146,9 @@ const Partners = () => {
                                 <p>Чтобы узнать, какие закупки мы планируем в 2025, вы можете посмотреть план закупок.</p>
                             </div>
                             <div className="content-card accent">
-                                <h3>Площадки для закупок</h3>
+                                <h3 style={{textShadow: 'none'}}>Площадки для закупок</h3>
                                 <p>Свыше 5 млн рублей (без НДС) - ЕЭТП «Росэлторг»</p>
                                 <p>До 5 млн рублей - ЭТП ГПБ Клик и Bidzaar</p>
-                                <h3 style={{color: 'white'}}>Площадки для закупок</h3>
-                                <ul>
-                                    <li>Свыше 5 млн рублей (без НДС) - ЕЭТП «Росэлторг»</li>
-                                    <li>До 5 млн рублей - ЭТП ГПБ Клик и Bidzaar</li>
-                                </ul>
                             </div>
                             <div className="content-card dark">
                                 <h3 className='exstraMain'>Наши принципы</h3>
