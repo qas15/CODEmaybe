@@ -1,6 +1,6 @@
 /* Основные цвета палитры */
 :root {
-    --electric-blue: #7DF9FF;
+    --electric-blue: #00a8ff;
     --hot-pink: #FF3495;
     --pure-white: #FFFFFF;
     --light-gray: #CCCCCC;
@@ -18,7 +18,7 @@
 
 /* Заголовки */
 h1, h3 {
-    font-family: 'Arial', sans-serif;
+    font-family: Light;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -34,10 +34,11 @@ h3 {
 
 /* Текст */
 p {
-    font-family: 'Arial', sans-serif;
+    font-family: Light;
     line-height: 1.5;
-    color: var(--pure-white);
+    /* color: var(--pure-white); */
 }
+
 
 /* Изображение */
 .img1 {

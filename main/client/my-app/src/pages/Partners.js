@@ -36,10 +36,10 @@ const FranchiseModal = ({ isOpen, onClose }) => {
                 <button className="modal-close-btn" onClick={onClose}>
                     <FaTimes />
                 </button>
-                <h3 className="modal-title">Франчайзинг от Tele2</h3>
+                <h3 className="modal-title">Франчайзинг от t2</h3>
                 <div className="modal-body">
                     <p className="modal-intro">
-                        <strong>Tele2</strong> предлагает <span className="highlight">уникальные условия</span> для партнеров
+                        <strong>t2</strong> предлагает <span className="highlight">уникальные условия</span> для партнеров
                     </p>
 
                     <div className="benefits-grid">
@@ -125,7 +125,7 @@ const Partners = () => {
             <AnimatedSection>
                 <section className="partners-hero">
                     <div className="container">
-                        <h1>ПАРТНЕРСТВО С TELE2</h1>
+                        <h1>ПАРТНЕРСТВО С t2</h1>
                         <p>Развивайте бизнес вместе с лидером телекоммуникационного рынка</p>
                     </div>
                 </section>
@@ -175,7 +175,7 @@ const Partners = () => {
                         <div className="two-columns">
                             <div className="left-col">
                                 <h3 style={{color: "black"}}>Преимущества</h3>
-                                <p>Розничная сеть Tele2 развивается по принципу франчайзинга и насчитывает более 3000 точек по всей России.</p>
+                                <p>Розничная сеть t2 развивается по принципу франчайзинга и насчитывает более 3000 точек по всей России.</p>
                                 <p>Мы предлагаем готовое бизнес-решение "под ключ" - от стратегии до оформления салона.</p>
                                 <button
                                     className="btn-primary"
@@ -232,7 +232,7 @@ const Partners = () => {
                             <div className="program-card dark" style={{boxShadow: "0px 0px 5px grey"}}>
                                 <div className="program-icon"><FaGlobe /></div>
                                 <h3 className='exstraMain'>Интернет-бизнесам</h3>
-                                <p>Зарабатывайте, размещая партнерские ссылки Tele2 на своих ресурсах.</p>
+                                <p>Зарабатывайте, размещая партнерские ссылки t2 на своих ресурсах.</p>
                             </div>
                         </div>
                     </div>
@@ -271,7 +271,7 @@ const Partners = () => {
             <AnimatedSection delay={500}>
                 <section className="partners-cta">
                     <div className="container">
-                        <h2>ГОТОВЫ СТАТЬ ПАРТНЕРОМ TELE2?</h2>
+                        <h2 className="white">ГОТОВЫ СТАТЬ ПАРТНЕРОМ t2?</h2>
                         <p>Оставьте заявку, и наш менеджер свяжется с вами для обсуждения условий сотрудничества</p>
                         <button className="btn-large">ОТПРАВИТЬ ЗАЯВКУ</button>
                     </div>

@@ -87,7 +87,7 @@ body, html {
 }
 
 .login-input {
-    background-color: #f9f9f9;
+    background-color: #fff;
     border: 1px solid var(--border-color);
     color: var(--text-primary);
     padding: 12px 15px;

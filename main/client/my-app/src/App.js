@@ -47,7 +47,7 @@ const App = observer(() => {
     return (
         <>
             <NavBar />
-            {!isAboutPage && <RunningString text="Tele2 — быстрый, выгодный и надежный мобильный оператор!" />}
+            {!isAboutPage && <RunningString text="t2 — быстрый, выгодный и надежный мобильный оператор!" />}
             <AppRouter />
             <ChatBot />
         </>

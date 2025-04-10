@@ -369,29 +369,33 @@ function OpenLayersMap() {
                 left: "10px",
                 marginTop: "10px",
             }}>
-                <p>Режим отображения:</p>
+                <p style={{color: '#000000'}}>Режим отображения:</p>
 
                 <FormGroup>
                     <FormControlLabel onChange={setChecked1G} control={<Checkbox defaultChecked size='small' sx={{
                         color: red[800],
                         '&.Mui-checked': {
                             color: red[600],
+                            fontFamily: 'Light',
                         }
                     }}/>} label="1G"/>
                     <FormControlLabel onChange={setChecked2G} control={<Checkbox defaultChecked size='small' sx={{
                         color: green[800],
+                        fontFamily: 'Light',
                         '&.Mui-checked': {
                             color: green[600],
                         }
                     }}/>} label="2G"/>
                     <FormControlLabel onChange={setChecked3G} control={<Checkbox defaultChecked size='small' sx={{
                         color: blue[800],
+                        fontFamily: 'Light',
                         '&.Mui-checked': {
                             color: blue[600],
                         }
                     }}/>} label="3G"/>
                     <FormControlLabel onChange={setChecked4G} control={<Checkbox defaultChecked size='small' sx={{
                         color: yellow[800],
+                        fontFamily: 'Light',
                         '&.Mui-checked': {
                             color: yellow[600],
                         }

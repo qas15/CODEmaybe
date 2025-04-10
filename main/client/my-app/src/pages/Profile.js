@@ -88,6 +88,7 @@ const Profile = () => {
                             <button
                                 className="edit-btn"
                                 onClick={() => setIsEditing(true)}
+                                style={{background: "#00a8ff"}}
                             >
                                 Редактировать
                             </button>
@@ -96,6 +97,7 @@ const Profile = () => {
                                 <button
                                     className="save-btn"
                                     onClick={handleSave}
+                                    style={{background: "#00a8ff"}}
                                 >
                                     Сохранить
                                 </button>

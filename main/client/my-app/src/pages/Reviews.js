@@ -78,7 +78,7 @@ const Reviews = () => {
 
   return (
       <div className="reviews-container">
-        <h1 className="reviews-title">ОТЗЫВЫ НАШИХ КЛИЕНТОВ</h1>
+        <h1 className="reviews-title" style={{boxShadow: "none", color: "#000"}}>ОТЗЫВЫ НАШИХ КЛИЕНТОВ</h1>
 
         {isLoading ? (
             <div className="loading-spinner"></div>

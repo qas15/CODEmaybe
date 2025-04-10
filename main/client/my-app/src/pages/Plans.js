@@ -131,7 +131,7 @@ const Tariff = () => {
                 <div className="container">
                     <div className="tariffs-grid">
                         {tariffs.map((tariff, index) => (
-                            <div className={`tariff-card ${tariff.isPopular ? 'popular' : ''}`} key={index}>
+                            <div className={`tariff-card ${tariff.isPopular ? '' : ''}`} key={index}>
                                 {tariff.badge && <div className="tariff-badge">{tariff.badge}</div>}
                                 <h2>{tariff.name}</h2>
                                 <div className="price">{tariff.price}</div>
@@ -185,7 +185,7 @@ const Tariff = () => {
                 <div className="container">
                     <h2>НЕ НАШЛИ ПОДХОДЯЩИЙ ТАРИФ?</h2>
                     <p>Наши консультанты помогут подобрать оптимальное решение специально для вас</p>
-А                </div>
+                </div>
             </section>
         </div>
     );

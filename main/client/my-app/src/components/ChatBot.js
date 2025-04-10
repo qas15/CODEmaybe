@@ -14,7 +14,7 @@ const ChatBot = () => {
     useEffect(() => {
         if (isOpen && messages.length === 0) {
             setMessages([{
-                text: 'Здравствуйте! Я виртуальный помощник Tele2. Чем могу помочь?',
+                text: 'Здравствуйте! Я виртуальный помощник t2. Чем могу помочь?',
                 isUser: false,
                 buttons: ['Новости 2025', 'Тарифы']
             }]);
@@ -48,7 +48,7 @@ const ChatBot = () => {
                     body: JSON.stringify({
                         model: 'nvidia/llama-3.3-nemotron-super-49b-v1:free',
                         messages: [
-                            { role: 'user', content: 'Ты консультант Tele2. Кратко расскажи про новости 2025 (100-120 слов): тарифы, акции, события. Без "не знаю". Примеры: "Новый тариф X". Ссылка: tele2.ru. Напиши подряд текстом с абзацами но не как схемой' },
+                            { role: 'user', content: 'Ты консультант t2. Кратко расскажи про новости 2025 (100-120 слов): тарифы, акции, события. Без "не знаю". Примеры: "Новый тариф X". Ссылка: t2.ru. Напиши подряд текстом с абзацами но не как схемой' },
                         ],
                     }),
                 });
@@ -72,7 +72,7 @@ const ChatBot = () => {
                     body: JSON.stringify({
                         model: 'nvidia/llama-3.3-nemotron-super-49b-v1:free',
                         messages: [
-                            { role: 'system', content: 'Ты консультант Tele2. Отвечай кратко и по делу. Если вопрос не связан с Tele2, вежливо скажи, что не можешь помочь.' },
+                            { role: 'system', content: 'Ты консультант t2. Отвечай кратко и по делу. Если вопрос не связан с t2, вежливо скажи, что не можешь помочь.' },
                             { role: 'user', content: message },
                         ],
                     }),
@@ -119,7 +119,7 @@ const ChatBot = () => {
                     transition={{ repeat: Infinity, duration: 2 }}
                 >
                     <FaRobot size={24} />
-                    <span>Помощь Tele2</span>
+                    <span>Помощь t2</span>
                 </BotButton>
             )}
 
@@ -132,7 +132,7 @@ const ChatBot = () => {
                     <ChatHeader>
                         <div>
                             <FaRobot size={20} />
-                            <h3>Виртуальный помощник Tele2</h3>
+                            <h3>Виртуальный помощник t2</h3>
                         </div>
                         <CloseButton onClick={() => setIsOpen(false)}>
                             <FaTimes size={18} />
@@ -205,7 +205,7 @@ const BotButton = styled(motion.button)`
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: linear-gradient(135deg, #00BFFF);
+  background: linear-gradient(135deg, #00a8ff);
   color: white;
   border: none;
   border-radius: 30px;
@@ -242,7 +242,7 @@ const ChatContainer = styled(motion.div)`
 `;
 
 const ChatHeader = styled.div`
-  background: linear-gradient(135deg, #00BFFF);
+  background: linear-gradient(135deg, #00a8ff);
   color: white;
   padding: 15px;
   display: flex;
@@ -306,7 +306,7 @@ const MessageContent = styled.div`
   border-radius: ${({ isUser }) =>
     isUser ? '15px 15px 0 15px' : '15px 15px 15px 0'};
   background: ${({ isUser }) =>
-    isUser ? 'linear-gradient(135deg, #00BFFF)' : '#e5e5ea'};
+    isUser ? 'linear-gradient(135deg, #00a8ff)' : '#e5e5ea'};
   color: ${({ isUser }) => isUser ? 'white' : '#333'};
   font-size: 14px;
   line-height: 1.5;
@@ -322,7 +322,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const Button = styled(motion.button)`
-  background: linear-gradient(135deg, #00BFFF);
+  background: linear-gradient(135deg, #00a8ff);
   color: white;
   border: none;
   border-radius: 20px;
@@ -350,13 +350,13 @@ const ChatInput = styled.form`
     font-size: 14px;
 
     &:focus {
-      border-color: #00BFFF;
+      border-color: #00a8ff;
     }
   }
 `;
 
 const SendButton = styled.button`
-  background: linear-gradient(135deg, #00BFFF);
+  background: linear-gradient(135deg, #00a8ff);
   color: white;
   border: none;
   border-radius: 50%;

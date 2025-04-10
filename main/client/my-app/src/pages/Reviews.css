@@ -205,7 +205,7 @@
 /* Кнопка отправки */
 .submit-button {
   padding: 1rem;
-  background-color: var(--electric-blue);
+  background-color: #00a8ff;
   color: white;
   border: none;
   border-radius: 8px;
